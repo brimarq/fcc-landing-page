@@ -1,0 +1,61 @@
+- const svgPwrSymbol = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' preserveAspectRatio='xMinYMin meet'><path d='M136.68,123.21A34.59,34.59,0,0,0,91.31,71a251.26,251.26,0,1,0,327.85-1.32,34.59,34.59,0,0,0-44.95,52.6,181.94,181.94,0,0,1,63.86,138.49c0,100.39-81.68,182.07-182.07,182.07S73.93,361.13,73.93,260.74A182.09,182.09,0,0,1,136.68,123.21Z'></path><path d='M290.59,277V34.59a34.59,34.59,0,0,0-69.19,0V277A34.59,34.59,0,1,0,290.59,277Z'></path></svg>`;
+
+header#header
+  
+  //- .homepage-hero-module
+  //-   .video-container
+  //-     .filter
+  //-     video#video.fillWidth(autoplay loop muted playsinline) 
+  //-       //- source(src="https://storage.googleapis.com/coverr-main/webm/Double_Espresso.webm" type="video/webm")
+  //-       //- source(src="https://storage.googleapis.com/coverr-main/ogv/Double_Espresso.ogv" type="video/ogg")
+  //-       //- source(src="https://storage.googleapis.com/coverr-main/mp4/Double_Espresso.mp4" type="video/mp4")
+  //-       //- .poster.hidden
+  //-       //-   img(src="https://storage.googleapis.com/coverr-public/poster/Double_Espresso.jpg" alt="")
+
+  //-       //- source(src="https://storage.googleapis.com/coverr-main/webm/Dodge-Tornado.webm" type="video/webm")
+  //-       //- source(src="https://storage.googleapis.com/coverr-main/mp4/Dodge-Tornado.mp4" type="video/mp4")
+  //-       //- .poster.hidden
+  //-       //-   img(src="https://storage.googleapis.com/coverr-public/poster/Dodge-Tornado.jpg" alt="")
+
+  //-       source(src="https://storage.googleapis.com/coverr-main/webm/Strum-Away.webm" type="video/webm")
+  //-       source(src="https://storage.googleapis.com/coverr-main/ogv/Strum-Away.ogv" type="video/ogg")
+  //-       source(src="https://storage.googleapis.com/coverr-main/mp4/Strum-Away.mp4" type="video/mp4")
+  //-     //- .poster.hidden
+  //-       img(src="https://storage.googleapis.com/coverr-public/poster/Strum-Away.jpg" alt="")
+
+  .hero-video
+    .video-container
+      video#video(autoplay loop muted playsinline) 
+        source(src="https://storage.googleapis.com/coverr-main/webm/Strum-Away.webm" type="video/webm")
+        source(src="https://storage.googleapis.com/coverr-main/ogv/Strum-Away.ogv" type="video/ogg")
+        source(src="https://storage.googleapis.com/coverr-main/mp4/Strum-Away.mp4" type="video/mp4")
+      //- .poster.hidden
+        img(src="https://storage.googleapis.com/coverr-public/poster/Strum-Away.jpg" alt="")
+  
+  nav#nav-bar
+    .nav-left
+      img#header-img(src="https://via.placeholder.com/60x60.png?text=logo")
+    .nav-right
+      a.nav-link(href="#section1") Section 1 
+      a.nav-link(href="#section2") Section 2 
+      a.nav-link(href="#section3") Section 3 
+
+section#section1
+  p Section 1
+  
+  
+
+  
+section#section2
+  p Section 2
+  p The navbar should always be at the top of the viewport. 
+  
+
+section#section3
+  p Section 3
+  form#form(action="https://www.freecodecamp.com/email-submit" method="post")
+    label(for="email") Email: 
+    input#email(type='email' name='email' placeholder='Email' required)
+    input#submit(type='submit')
+
+button#custom_fcc_foldout_toggler !{svgPwrSymbol} TEST
