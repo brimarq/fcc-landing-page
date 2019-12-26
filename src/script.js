@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+  let prevScrollPos = window.pageYOffset;
+  window.onscroll = function() {
+    const navbar = document.querySelector('#nav-bar');
+    let currentScrollPos = window.pageYOffset;
+    navbar.style.top = prevScrollPos > currentScrollPos ? "0" : "-60px";
+    prevScrollPos = currentScrollPos;
+  }
 
   useCustomFccToggler();
   

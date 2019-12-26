@@ -36,15 +36,18 @@ $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px
   box-sizing: border-box;
 }
 
-html, body { 
-  min-height: 100%; 
+html {
   line-height: $rlh;
+}
+
+html, body { 
+  min-height: 100%;
 }
 
 body {
   font-family: $primary-font-family;
-  font-size: 100%;
-  margin: 0;
+  /* font-size: 100%;
+  margin: 0; */
 }
 
 /* vertical rhythm for block-level elements */
@@ -60,6 +63,41 @@ a {
 header {
   position: relative;
   /* height: 100vh; */
+}
+
+nav#nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  padding: 5px 10px;
+  top: 0;
+  left: 0;
+  /* min-height: 50px; */
+  width: 100%;
+  background: hsla(0, 0%, 0%, .7);
+  z-index: 100;
+  transition: top 0.3s;
+  /* line-height: 2; */
+  color: white;
+
+  & .nav-bar-left {
+    display: flex;
+    align-items: center;
+    
+  }
+
+  & ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & .nav-link {
+    color: inherit;
+  }
+
 }
 
 .hero-video {
@@ -104,59 +142,10 @@ header {
     max-height: 100vh;
     min-height: 300px;
     
-    
-    
     /* background: linear-gradient(to top,#525252,#333); */
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
 }
-
-
-
-#nav-bar {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-height: 50px;
-  width: 100%;
-  background: hsla(0, 0%, 0%, .7);
-  z-index: 100;
-  color: white;
-  & .nav-link {
-    color: inherit;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -192,56 +181,3 @@ header {
     display: inline-flex;
   }
 }
-
-
-/* For bg video */
-/* .homepage-hero-module {
-  position: relative;
-  border-right: none;
-  border-left: none;
-}
-
-.no-video, .touch {
-  & .video-container {
-    & video {
-      display: none;
-    }
-    & .poster {
-      display: block !important;
-    }
-  }
-}
-
-.video-container {
-  position: relative;
-  bottom: 0%;
-  left: 0%;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: #000;
-
-  & .poster img {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-  }
-
-  & .filter {
-    position: absolute;
-    width: 100%;
-    z-index: 50;
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  & video {
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
-    top: 0;
-  }
-
-  & video.fillWidth {
-    width: 100%;
-  }
-} */
