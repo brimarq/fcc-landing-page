@@ -1,48 +1,35 @@
 - const svgPwrSymbol = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' preserveAspectRatio='xMinYMin meet'><path d='M136.68,123.21A34.59,34.59,0,0,0,91.31,71a251.26,251.26,0,1,0,327.85-1.32,34.59,34.59,0,0,0-44.95,52.6,181.94,181.94,0,0,1,63.86,138.49c0,100.39-81.68,182.07-182.07,182.07S73.93,361.13,73.93,260.74A182.09,182.09,0,0,1,136.68,123.21Z'></path><path d='M290.59,277V34.59a34.59,34.59,0,0,0-69.19,0V277A34.59,34.59,0,1,0,290.59,277Z'></path></svg>`;
 
-- const headerImg = `data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20438'%20width='512'%20height='438'%3E%3Cpath%20class='soundhole'%20fill='white'%20d='M257.94%2047.137c94.366%200%20170.866%2076.672%20170.866%20171.252%200%2094.581-76.5%20171.253-170.866%20171.253-94.367%200-170.866-76.672-170.866-171.253%200-94.58%2076.499-171.252%20170.866-171.252zm0%2029.999c-77.783.001-140.866%2063.226-140.866%20141.253%200%2078.027%2063.083%20141.253%20140.866%20141.253%2077.783%200%20140.866-63.226%20140.866-141.253%200-78.027-63.083-141.252-140.866-141.253z'/%3E%3Cg%20class='strings'%20stroke='white'%20stroke-width='10'%20stroke-linecap='round'%20stroke-linejoin='round'%20fill='none'%3E%3Cpath%20d='M5%20231.689L383.403%204.5l-1.092.658M30.389%20272.805l378.403-227.19-1.092.659M56.198%20312.496L434.602%2085.307l-1.093.658M79.143%20353.05l378.404-227.189-1.093.658M104.549%20393.47l378.403-227.19-1.092.659M128.666%20434.222l378.403-227.19-1.093.659'/%3E%3C/g%3E%3C/svg%3E`;
+mixin svgLogo(height, soundholeColor, stringsColor, stringWidth, isHeaderImg=false)
+  - const props = {xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 512 438', preserveAspectRatio: 'xMinYMin meet', pathSoundhole: 'M257.94 47.137c94.366 0 170.866 76.672 170.866 171.252 0 94.581-76.5 171.253-170.866 171.253-94.367 0-170.866-76.672-170.866-171.253 0-94.58 76.499-171.252 170.866-171.252zm0 29.999c-77.783.001-140.866 63.226-140.866 141.253 0 78.027 63.083 141.253 140.866 141.253 77.783 0 140.866-63.226 140.866-141.253 0-78.027-63.083-141.252-140.866-141.253z', pathStrings: 'M5 231.689L383.403 4.5l-1.092.658M30.389 272.805l378.403-227.19-1.092.659M56.198 312.496L434.602 85.307l-1.093.658M79.143 353.05l378.404-227.189-1.093.658M104.549 393.47l378.403-227.19-1.092.659M128.666 434.222l378.403-227.19-1.093.659'};
+  if isHeaderImg
+    - const headerImgSvg = `<svg xmlns='${props.xmlns}' viewBox='${props.viewBox}' preserveAspectRatio='${props.preserveAspectRatio}' height='${height}'><path d='${props.pathSoundhole}' fill='${soundholeColor}'/><path d='${props.pathStrings}' stroke='${stringsColor}' stroke-width='${stringWidth}'/></svg>`;
+    img#header-img(src=`data:image/svg+xml;utf8,${encodeURI(headerImgSvg)}` alt="logo" )
+  else
+    svg(xmlns=props.xmlns viewBox=props.viewBox preserveAspectRatio=props.preserveAspectRatio)
+      path(class='path-soundhole' d=props.pathSoundhole fill=soundholeColor)
+      path(class='path-strings' d=props.pathStrings stroke-linecap='round' stroke-linejoin='round' stroke=stringsColor stroke-width=stringWidth)
 
-- const logo = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 438' width='512' height='438'><path class='soundhole' fill='white' d='M257.94 47.137c94.366 0 170.866 76.672 170.866 171.252 0 94.581-76.5 171.253-170.866 171.253-94.367 0-170.866-76.672-170.866-171.253 0-94.58 76.499-171.252 170.866-171.252zm0 29.999c-77.783.001-140.866 63.226-140.866 141.253 0 78.027 63.083 141.253 140.866 141.253 77.783 0 140.866-63.226 140.866-141.253 0-78.027-63.083-141.252-140.866-141.253z'/><g class='strings' stroke='gray' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'><path d='M5 231.689L383.403 4.5l-1.092.658M30.389 272.805l378.403-227.19-1.092.659M56.198 312.496L434.602 85.307l-1.093.658M79.143 353.05l378.404-227.189-1.093.658M104.549 393.47l378.403-227.19-1.092.659M128.666 434.222l378.403-227.19-1.093.659'/></g></svg>`;
+//- svg(xmlns='http://www.w3.org/2000/svg' id='svg-logo' style='display:none;')
+//-   symbol(id='svg-logo-symbol' viewBox='0 0 512 438' width='512' height='438')
+//-     path(class='soundhole' fill='white' d='M257.94 47.137c94.366 0 170.866 76.672 170.866 171.252 0 94.581-76.5 171.253-170.866 171.253-94.367 0-170.866-76.672-170.866-171.253 0-94.58 76.499-171.252 170.866-171.252zm0 29.999c-77.783.001-140.866 63.226-140.866 141.253 0 78.027 63.083 141.253 140.866 141.253 77.783 0 140.866-63.226 140.866-141.253 0-78.027-63.083-141.252-140.866-141.253z')
+//-     g(class='strings' stroke='gray' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none')
+//-       path(d='M5 231.689L383.403 4.5l-1.092.658M30.389 272.805l378.403-227.19-1.092.659M56.198 312.496L434.602 85.307l-1.093.658M79.143 353.05l378.404-227.189-1.093.658M104.549 393.47l378.403-227.19-1.092.659M128.666 434.222l378.403-227.19-1.093.659')
 
 header#header
   
-  //- .homepage-hero-module
-  //-   .video-container
-  //-     .filter
-  //-     video#video.fillWidth(autoplay loop muted playsinline) 
-  //-       //- source(src="https://storage.googleapis.com/coverr-main/webm/Double_Espresso.webm" type="video/webm")
-  //-       //- source(src="https://storage.googleapis.com/coverr-main/ogv/Double_Espresso.ogv" type="video/ogg")
-  //-       //- source(src="https://storage.googleapis.com/coverr-main/mp4/Double_Espresso.mp4" type="video/mp4")
-  //-       //- .poster.hidden
-  //-       //-   img(src="https://storage.googleapis.com/coverr-public/poster/Double_Espresso.jpg" alt="")
-
-  //-       //- source(src="https://storage.googleapis.com/coverr-main/webm/Dodge-Tornado.webm" type="video/webm")
-  //-       //- source(src="https://storage.googleapis.com/coverr-main/mp4/Dodge-Tornado.mp4" type="video/mp4")
-  //-       //- .poster.hidden
-  //-       //-   img(src="https://storage.googleapis.com/coverr-public/poster/Dodge-Tornado.jpg" alt="")
-
-  //-       source(src="https://storage.googleapis.com/coverr-main/webm/Strum-Away.webm" type="video/webm")
-  //-       source(src="https://storage.googleapis.com/coverr-main/ogv/Strum-Away.ogv" type="video/ogg")
-  //-       source(src="https://storage.googleapis.com/coverr-main/mp4/Strum-Away.mp4" type="video/mp4")
-  //-     //- .poster.hidden
-  //-       img(src="https://storage.googleapis.com/coverr-public/poster/Strum-Away.jpg" alt="")
-
-  //- .nav-container
   nav#nav-bar
-    //- .nav-left
-      //- img#header-img(src="https://via.placeholder.com/60x60.png?text=logo")
+
     .nav-bar-left
-      a.nav-link(href="#") #[img#header-img(src=`${headerImg}` alt="logo" height='40px;')] 
-      //- span Classic Guitar Strings
+      a(href="#")
+        img(src='https://via.placeholder.com/40' style='display: none;')
+        +svgLogo('40', 'white', 'white', '10', true)
+  
     .nav-bar-right
       ul
         li: a.nav-link(href="#section1") Section 1 
         li: a.nav-link(href="#section2") Section 2
         li: a.nav-link(href="#section3") Section 3
-    //- .nav-right
-    //-   a.nav-link(href="#section1") Section 1 
-    //-   a.nav-link(href="#section2") Section 2 
-    //-   a.nav-link(href="#section3") Section 3 
 
   .hero-video
     .video-container
@@ -56,6 +43,10 @@ header#header
 
 section#section1
   p Section 1
+
+  .string-card
+    +svgLogo(null, 'black', 'black', '5')
+
   p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis lacus metus. Vestibulum consequat augue sed magna ullamcorper lacinia. In iaculis augue augue, at sollicitudin nibh rutrum nec. Integer posuere, mauris sed feugiat porta, urna libero dapibus nulla, sit amet dictum quam lorem nec est. Maecenas ullamcorper lorem vitae nisi posuere, quis consectetur sem auctor. Quisque velit justo, congue et diam eu, hendrerit tristique lorem. Etiam vehicula, neque vel efficitur pulvinar, metus eros volutpat ligula, nec aliquet dolor leo ut nulla. Quisque sollicitudin faucibus eros, id dictum diam convallis ut.
   p Mauris eget gravida augue. Mauris pharetra non ex nec scelerisque. Sed et ultricies neque, id faucibus dui. Aliquam posuere euismod tellus in elementum. Ut commodo leo ornare, euismod felis vel, mollis ante. Cras vestibulum, elit eget condimentum bibendum, justo lectus venenatis ex, sit amet posuere lacus est id elit. Vestibulum fringilla elit tortor, eget luctus dui ornare ac. Etiam volutpat dui ut sapien fermentum consequat. Vestibulum vitae dolor faucibus, eleifend neque in, varius elit. Quisque non sodales justo, in luctus mauris. Aenean fermentum magna id elementum ornare. Fusce eu bibendum lorem.
   
@@ -67,7 +58,7 @@ section#section2
 section#section3
   p Section 3
   p Phasellus nibh libero, mollis et porta sit amet, lacinia id ligula. Duis sed felis et sem porttitor pharetra. Nulla volutpat sollicitudin magna, eget gravida dolor fringilla sed. Praesent ut ipsum ipsum. Quisque posuere sodales orci sit amet rhoncus. Proin feugiat orci ut turpis euismod condimentum vel tempor lorem. Etiam accumsan elit in magna sollicitudin convallis. In hac habitasse platea dictumst. Curabitur facilisis libero a sagittis vestibulum. Fusce a magna vitae libero molestie tincidunt et fermentum nulla. Donec pretium dolor ut metus porttitor, ac sollicitudin ante consectetur. Duis gravida vehicula ex, ut gravida nunc aliquam ac. Vestibulum auctor magna sit amet convallis porttitor. Nullam pretium vel dolor id sodales. Etiam mattis semper dolor.
-  
+
   form#form(action="https://www.freecodecamp.com/email-submit" method="post")
     label(for="email") Email: 
     input#email(type='email' name='email' placeholder='Email' required)

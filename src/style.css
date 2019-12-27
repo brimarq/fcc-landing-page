@@ -84,7 +84,9 @@ nav#nav-bar {
   & .nav-bar-left {
     display: flex;
     align-items: center;
-    
+    /* & > img {
+      display: none;
+    } */
   }
 
   & ul {
@@ -147,7 +149,21 @@ nav#nav-bar {
 
 }
 
+section {
+  padding: 0 10px;
+}
 
+.string-card {
+  position: relative;
+  background-color: lime;
+  height: 300px;
+  width: 300px;
+  & svg {
+    width: 275px;
+    
+    margin-left: auto;
+  }
+}
 
 
 
