@@ -10,7 +10,10 @@ $color-new-fcc-toggler-btn-bg: hsl(227, 12%, 30%);
 
 $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px 20px blue) grayscale(50%) hue-rotate(90deg) invert(75%) opacity(25%) saturate(30%) sepia(60%);
 
-
+$bg-img-segovia: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Andr%C3%A9s_Segovia_%281962%29.jpg/240px-Andr%C3%A9s_Segovia_%281962%29.jpg");
+$bg-img-tarrega: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Francisco_Tarrega.jpg/320px-Francisco_Tarrega.jpg");
+$bg-img-barrios: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Agust%C3%ADn_Barrios_1922.jpg/359px-Agust%C3%ADn_Barrios_1922.jpg");
+$bg-img-sor: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Fernando_Sor.jpg/219px-Fernando_Sor.jpg");
 
 @define-mixin button {
   appearance: none;
@@ -30,6 +33,76 @@ $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px
   padding-left: calc(0.75em - 1px);
   padding-right: calc(0.75em - 1px);
   padding-top: calc(0.5em - 1px);
+}
+
+@define-mixin soundhole $soundholeSize, $soundholeBorderWidth, $soundholeBorderColor, $stringLength, $stringWidth, $stringColor, $stringSpaceColor, $soundholeBackground {
+  position: relative;
+  height: $soundholeSize;
+  /* height: auto; */
+  width: $soundholeSize;
+  padding-top: 100%; /* Gives height to div with no content */
+  /* background: blue; */
+  /* border: $soundholeBorderWidth solid $soundholeBorderColor; */
+  border-radius: 50%;
+  outline: 1px solid lime;
+  /* background-image: $bg-img-sor; */
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border: $soundholeBorderWidth solid $soundholeBorderColor;
+    border-radius: inherit;
+    outline: 1px solid blue;
+  }
+
+  &::after {
+    $strSpace: calc(100% / 6);
+    $strPadding: calc(($strSpace - $stringWidth) / 2);
+    $strEnd: calc($strPadding + $stringWidth);
+    content: "";
+    position: absolute;
+    /* height: 100%; */
+    height: calc(100% - ($soundholeBorderWidth * 2));
+    width: $stringLength;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-0.08turn);
+    background: repeating-linear-gradient(
+      $stringSpaceColor 0% $strPadding, 
+      $stringColor calc($strPadding + 1%) $strEnd, 
+      $stringSpaceColor calc($strEnd + 1%) $strSpace
+    );
+  }
+
+  & .round-img {
+    /* position: relative; */
+    border-radius: 50%;
+    /* padding-top: 100%; */
+    height: 100%;
+    width: 100%;
+    border: $soundholeBorderWidth solid transparent;
+    background-clip: padding-box;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+
+  /* & img {
+    position: relative;
+    object-fit: none;
+    object-position: 50% 50%;
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    border: $soundholeBorderWidth solid transparent;
+    z-index: 1;
+  } */
 }
 
 *, ::before, ::after {
@@ -153,17 +226,112 @@ section {
   padding: 0 10px;
 }
 
-.string-card {
-  position: relative;
-  background-color: lime;
-  height: 300px;
-  width: 300px;
-  & svg {
-    width: 275px;
-    
-    margin-left: auto;
+.product-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  & .card {
+    margin: 0 1em;
   }
 }
+
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  & .testimonial-img-container {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    margin-right: 30px;
+
+    & .testimonial-img {
+      @mixin soundhole 100%, 10px, gray, 120%, 3px, hsl(120, 100%, 50%), hsla(120, 100%, 50%, 0), none;
+  
+      & .round-img {
+        position: absolute;
+        top: 0;
+        &.segovia { 
+          background-image: $bg-img-segovia;
+          background-size: 100%;
+          filter: sepia(100%);
+        }
+        &.tarrega { 
+          background-image: $bg-img-tarrega;
+          background-size: cover;
+          /* background-position: 10% 20%; */
+        }
+        &.barrios { 
+          background-image: $bg-img-barrios;
+          background-size: 120%;
+          background-position: 50% 8%;
+          filter: sepia(100%);
+        }
+        &.sor { 
+          background-image: $bg-img-sor;
+          background-size: 160%;
+          background-position: 50% 45%;
+        }
+      }
+      
+    }
+  }
+
+  
+
+  & .testimonial-quote {
+    max-width: 500px;
+    & p {
+      margin: 0;
+    }
+    & p:last-of-type {
+      text-align: right;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.logo-container {
+  position: relative;
+  margin: 100px;
+  outline: 1px solid red;
+  width: 250px;
+  height: 250px;
+  padding: 20px;
+
+  & .logo {
+    @mixin soundhole 100%, 25px, gray, 150%, 3px, hsl(120, 100%, 50%), hsla(120, 100%, 50%, 0), none;
+
+    & img {
+      z-index: 0;
+    }
+  }
+  
+}
+  
+
+
+
 
 
 
@@ -197,3 +365,4 @@ section {
     display: inline-flex;
   }
 }
+

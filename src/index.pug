@@ -16,6 +16,12 @@ mixin svgLogo(height, soundholeColor, stringsColor, stringWidth, isHeaderImg=fal
 //-     g(class='strings' stroke='gray' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none')
 //-       path(d='M5 231.689L383.403 4.5l-1.092.658M30.389 272.805l378.403-227.19-1.092.659M56.198 312.496L434.602 85.307l-1.093.658M79.143 353.05l378.404-227.189-1.093.658M104.549 393.47l378.403-227.19-1.092.659M128.666 434.222l378.403-227.19-1.093.659')
 
+mixin card() 
+  .card
+    img(src='https://via.placeholder.com/250')
+    //- +svgLogo(null, 'black', 'black', '5')
+
+
 header#header
   
   nav#nav-bar
@@ -44,14 +50,55 @@ header#header
 section#section1
   p Section 1
 
-  .string-card
-    +svgLogo(null, 'black', 'black', '5')
+  .product-cards
+    - for (var x = 0; x < 3; x++)
+      +card()
 
   p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis lacus metus. Vestibulum consequat augue sed magna ullamcorper lacinia. In iaculis augue augue, at sollicitudin nibh rutrum nec. Integer posuere, mauris sed feugiat porta, urna libero dapibus nulla, sit amet dictum quam lorem nec est. Maecenas ullamcorper lorem vitae nisi posuere, quis consectetur sem auctor. Quisque velit justo, congue et diam eu, hendrerit tristique lorem. Etiam vehicula, neque vel efficitur pulvinar, metus eros volutpat ligula, nec aliquet dolor leo ut nulla. Quisque sollicitudin faucibus eros, id dictum diam convallis ut.
   p Mauris eget gravida augue. Mauris pharetra non ex nec scelerisque. Sed et ultricies neque, id faucibus dui. Aliquam posuere euismod tellus in elementum. Ut commodo leo ornare, euismod felis vel, mollis ante. Cras vestibulum, elit eget condimentum bibendum, justo lectus venenatis ex, sit amet posuere lacus est id elit. Vestibulum fringilla elit tortor, eget luctus dui ornare ac. Etiam volutpat dui ut sapien fermentum consequat. Vestibulum vitae dolor faucibus, eleifend neque in, varius elit. Quisque non sodales justo, in luctus mauris. Aenean fermentum magna id elementum ornare. Fusce eu bibendum lorem.
   
 section#section2
   p Section 2
+
+  .testimonials
+    .testimonial
+      .testimonial-img-container
+        .testimonial-img
+          .round-img.segovia
+      .testimonial-quote
+        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
+        p - Andres S.
+
+    .testimonial
+      .testimonial-img-container
+        .testimonial-img
+         .round-img.tarrega
+      .testimonial-quote
+        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
+        p - Francisco T.
+
+    .testimonial
+      .testimonial-img-container
+        .testimonial-img
+         .round-img.barrios
+      .testimonial-quote
+        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
+        p - Agustín B.
+
+    .testimonial
+      .testimonial-img-container
+        .testimonial-img
+         .round-img.sor
+      .testimonial-quote
+        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
+        p - Fernando S.
+
+  .logo-container
+    .logo
+      //- img.logo-img(src='https://via.placeholder.com/250')
+
+      
+
   p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc. Proin pellentesque, justo eu interdum tincidunt, lorem nisi accumsan dolor, at ultricies ex odio id nibh. Donec vel libero eget enim gravida semper. Maecenas vulputate odio vel lorem egestas interdum. Ut faucibus erat at justo sodales, sit amet lobortis nibh ornare. Mauris aliquet ex justo, vitae vehicula tellus maximus id. Nulla non euismod eros. Nam porttitor pulvinar dolor, sed consequat augue. Phasellus felis risus, aliquam ac condimentum sed, vestibulum non elit. Sed elementum bibendum tellus sit amet pulvinar.
   p  Nullam laoreet turpis arcu, in iaculis mauris varius ultrices. Donec suscipit eleifend tortor, sit amet tristique magna commodo ac. Maecenas maximus purus lorem, at pellentesque ipsum auctor eget. Fusce molestie magna ac porttitor porta. Fusce ante urna, commodo eget commodo a, lacinia convallis tellus. Vivamus interdum eu augue non blandit. Nam ante tellus, dapibus ut ipsum vel, tincidunt laoreet urna. In sit amet pellentesque mauris, sit amet aliquet magna. In rutrum non sapien ut tincidunt. Praesent non nibh efficitur, malesuada velit vel, placerat purus. Etiam eget dui nec ligula condimentum ultrices.
 
@@ -65,3 +112,4 @@ section#section3
     input#submit(type='submit')
 
 button#custom_fcc_foldout_toggler !{svgPwrSymbol} TEST
+
