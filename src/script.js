@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
   useCustomFccToggler();
-  
+  testimonialCarousel();
 
   // Replace original fCC test suite toggler with one that doesn't clash with page elements
   async function useCustomFccToggler() {
@@ -75,5 +75,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
   }
 
+  
+  function testimonialCarousel() {
+    let testimonialIndex = 0;
+    showTestimonials();
+
+    function showTestimonials() {
+      const testimonials = document.querySelectorAll('.testimonial');
+      for (let i = 0; i < testimonials.length; i++) {
+        testimonials[i].style.display = 'none';
+      }
+      testimonialIndex++;
+      if (testimonialIndex > testimonials.length) { testimonialIndex = 1 };
+      testimonials[testimonialIndex - 1].style.display = 'flex';
+      setTimeout(showTestimonials, 7000);
+    }
+  }
+
 });
+
 
