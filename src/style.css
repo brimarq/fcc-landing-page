@@ -10,10 +10,14 @@ $color-new-fcc-toggler-btn-bg: hsl(227, 12%, 30%);
 
 $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px 20px blue) grayscale(50%) hue-rotate(90deg) invert(75%) opacity(25%) saturate(30%) sepia(60%);
 
-$bg-img-segovia: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Andr%C3%A9s_Segovia_%281962%29.jpg/240px-Andr%C3%A9s_Segovia_%281962%29.jpg");
-$bg-img-tarrega: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Francisco_Tarrega.jpg/320px-Francisco_Tarrega.jpg");
-$bg-img-barrios: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Agust%C3%ADn_Barrios_1922.jpg/359px-Agust%C3%ADn_Barrios_1922.jpg");
-$bg-img-sor: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Fernando_Sor.jpg/219px-Fernando_Sor.jpg");
+
+$img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
+$img-gabrielab: url("https://live.staticflickr.com/4473/37694010252_4358929aeb_c.jpg");
+$img-jasonm: url("https://live.staticflickr.com/3691/12256046533_1ce12441be_c.jpg");
+$img-juanr: url("https://live.staticflickr.com/65535/48994864191_4a523436de.jpg");
+$img-luisr: url("https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg");
+$img-rebeccap: url("https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg");
+$img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg");
 
 @define-mixin button {
   appearance: none;
@@ -103,6 +107,59 @@ $bg-img-sor: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Fern
     border: $soundholeBorderWidth solid transparent;
     z-index: 1;
   } */
+}
+
+@define-mixin logo-soundhole $soundhole-color, $string-color {
+  position: relative;
+  /* box-sizing: content-box; */
+  height: 0;
+  width: 100%;
+  /* padding-top: calc(100% * 438/512); */
+  padding-bottom: 85.546875%;
+  $soundhole-start: 58%;
+  $soundhole-end: calc($soundhole-start + 12%);
+  background-image: radial-gradient(
+    circle farthest-side,
+    transparent $soundhole-start,
+    $soundhole-color calc($soundhole-start + 0.5%) $soundhole-end,
+    transparent calc($soundhole-end + 0.5%)
+  );
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 67%;
+    width: 84%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    /* outline: 1px solid lime; */
+    /* $string-color: orange; */
+    $string-width: 1.5%;
+    $string-space: calc(100% / 6);
+    $string-start: calc(($string-space - $string-width) / 2 - 0.5%);
+    $string-end: calc($string-start + $string-width);
+
+    background-image: repeating-linear-gradient(
+      transparent 0% $string-start,
+      $string-color calc($string-start + 0.5%) $string-end,
+      transparent calc($string-end + 0.5%) $string-space
+    );
+  }
+}
+
+@define-mixin logo-soundhole-img {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    clip-path: circle(32% at 50%);
+    background-repeat: no-repeat;
+    @mixin-content;
+  }
 }
 
 *, ::before, ::after {
@@ -226,17 +283,6 @@ section {
   padding: 0 10px;
 }
 
-.product-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  & .card {
-    margin: 0 1em;
-  }
-}
-
-
 .testimonials {
   display: flex;
   flex-direction: column;
@@ -245,50 +291,71 @@ section {
 }
 
 .testimonial {
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: flex-start;
 
-  & .testimonial-img-container {
+  & .testimonial-img {
     width: 100%;
-    max-width: 120px;
+    max-width: 200px;
     height: auto;
     margin-right: 30px;
 
-    & .testimonial-img {
-      @mixin soundhole 100%, 10px, gray, 120%, 3px, hsl(120, 100%, 50%), hsla(120, 100%, 50%, 0), none;
-  
-      & .round-img {
-        position: absolute;
-        top: 0;
-        &.segovia { 
-          background-image: $bg-img-segovia;
-          background-size: 100%;
-          filter: sepia(100%);
-        }
-        &.tarrega { 
-          background-image: $bg-img-tarrega;
-          background-size: cover;
-          /* background-position: 10% 20%; */
-        }
-        &.barrios { 
-          background-image: $bg-img-barrios;
-          background-size: 120%;
-          background-position: 50% 8%;
-          filter: sepia(100%);
-        }
-        &.sor { 
-          background-image: $bg-img-sor;
-          background-size: 160%;
-          background-position: 50% 45%;
+    & .logo-soundhole {
+      @mixin logo-soundhole dodgerblue, lightsteelblue;
+
+      &.testimonial-0 {
+        @mixin logo-soundhole-img {
+          background-image: $img-cristos;
+          background-position: right bottom 115%;
+          background-size: 95%;
         }
       }
-      
+      &.testimonial-1 {
+        @mixin logo-soundhole-img {
+          background-image: $img-gabrielab;
+          background-position: center bottom 20%;
+          background-size: 235%;
+        }
+      }
+      &.testimonial-2 {
+        @mixin logo-soundhole-img {
+          background-image: $img-jasonm;
+          background-position: right 40% bottom 60%;
+          background-size: 201%;
+        }
+      }
+      &.testimonial-3 {
+        @mixin logo-soundhole-img {
+          background-image: $img-juanr;
+          background-position: center top 127%;
+          background-size: 101%;
+        }
+      }
+      &.testimonial-4 {
+        @mixin logo-soundhole-img {
+          background-image: $img-luisr;
+          background-position: left 38% top 117%;
+          background-size: 125%;
+        }
+      }
+      &.testimonial-5 {
+        @mixin logo-soundhole-img {
+          background-image: $img-rebeccap;
+          background-position: right 37% bottom 185%;
+          background-size: 69%;
+        }
+      }
+      &.testimonial-6 {
+        @mixin logo-soundhole-img {
+          background-image: $img-eduardof;
+          background-position: left 55% bottom 161%;
+          background-size: 157%;
+        }
+      }
     }
   }
-
   
-
   & .testimonial-quote {
     max-width: 500px;
     & p {
@@ -310,17 +377,6 @@ section {
   to {opacity: 1}
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .logo-container {
   position: relative;
   margin: 100px;
@@ -339,7 +395,73 @@ section {
   
 }
   
+/* .product-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
+  & .card {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    outline: 1px solid lime;
+    margin: 0 1em;
+  }
+} */
+
+
+
+.product-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  & .card {
+    position: relative;
+    /* display: inline-block; */
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 1em;
+    outline: 1px solid red;
+
+    & .card-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    & .card-logo {
+      position: relative;
+      height: 0;
+      width: 80%;
+      padding-top: 100%;
+      margin: auto;
+
+      & .logo-soundhole {
+        @mixin logo-soundhole gray, lime;
+        position: absolute;
+        bottom: 5%;
+        /* bottom: 0; */
+
+      }
+    }
+
+    & .card-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* & .card-logo {
+      @mixin logo-soundhole gray, lime;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0)
+    } */
+  }
+}
 
 
 

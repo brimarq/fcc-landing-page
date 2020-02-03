@@ -1,5 +1,38 @@
 - const svgPwrSymbol = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' preserveAspectRatio='xMinYMin meet'><path d='M136.68,123.21A34.59,34.59,0,0,0,91.31,71a251.26,251.26,0,1,0,327.85-1.32,34.59,34.59,0,0,0-44.95,52.6,181.94,181.94,0,0,1,63.86,138.49c0,100.39-81.68,182.07-182.07,182.07S73.93,361.13,73.93,260.74A182.09,182.09,0,0,1,136.68,123.21Z'></path><path d='M290.59,277V34.59a34.59,34.59,0,0,0-69.19,0V277A34.59,34.59,0,1,0,290.59,277Z'></path></svg>`;
 
+
+-
+  const testimonials = [
+    {
+      author: 'Cristo S.',
+      quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsa explicabo alias veniam, eos impedit quia placeat non dolor mollitia!',
+    },
+    {
+      author: 'Gabriela B.',
+      quote: 'Neque rerum, perspiciatis tempora totam iste laudantium dignissimos reprehenderit aut amet repudiandae quisquam. Magnam laboriosam quam cupiditate veritatis error tempora iste nulla deleniti libero aliquid.',
+    },
+    {
+      author: 'Jason M.',
+      quote: 'Inventore dolore fugit temporibus. Amet debitis ipsa voluptas quos quas officia dolor? Minima sapiente pariatur adipisci omnis fugiat, quisquam praesentium ab consequuntur totam velit magni ipsum molestias aliquid autem amet dolorum magnam neque doloremque iste vero deserunt cumque?',
+    },
+    {
+      author: 'Juan R.',
+      quote: 'Eos unde sit totam pariatur enim tempora eligendi, animi, quo, maxime omnis officia aut cumque consectetur possimus ea facere? Nesciunt repellat, asperiores minima similique rerum dignissimos officia, delectus nemo hic repudiandae sapiente iste ex impedit obcaecati! Vitae, perferendis?',
+    },
+    {
+      author: 'Luis R.',
+      quote: 'Fuga, amet vero quasi est dolor sit maiores nostrum accusamus omnis! Mollitia aspernatur nostrum quas repudiandae tempore cupiditate optio, ad labore ex quisquam eaque ea harum quia alias!',
+    },
+    {
+      author: 'Rebecca P.',
+      quote: 'Laboriosam, unde. Eos temporibus dolore animi quas delectus deleniti incidunt totam rem nemo libero quos assumenda, doloribus est repellat iure reiciendis vel similique veritatis, ad deserunt iusto?',
+    },
+    {
+      author: 'Eduardo F.',
+      quote: 'Ducimus accusamus magni aut nobis veniam rem quidem consequatur reiciendis possimus. Quis rem animi nulla cupiditate eligendi officia in deserunt sint eaque ullam consequuntur debitis id inventore alias tempore maiores itaque asperiores reiciendis aspernatur, fuga quod impedit adipisci iusto eveniet?'
+    }
+  ];
+
 mixin svgLogo(height, soundholeColor, stringsColor, stringWidth, isHeaderImg=false)
   - const props = {xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 512 438', preserveAspectRatio: 'xMinYMin meet', pathSoundhole: 'M257.94 47.137c94.366 0 170.866 76.672 170.866 171.252 0 94.581-76.5 171.253-170.866 171.253-94.367 0-170.866-76.672-170.866-171.253 0-94.58 76.499-171.252 170.866-171.252zm0 29.999c-77.783.001-140.866 63.226-140.866 141.253 0 78.027 63.083 141.253 140.866 141.253 77.783 0 140.866-63.226 140.866-141.253 0-78.027-63.083-141.252-140.866-141.253z', pathStrings: 'M5 231.689L383.403 4.5l-1.092.658M30.389 272.805l378.403-227.19-1.092.659M56.198 312.496L434.602 85.307l-1.093.658M79.143 353.05l378.404-227.189-1.093.658M104.549 393.47l378.403-227.19-1.092.659M128.666 434.222l378.403-227.19-1.093.659'};
   if isHeaderImg
@@ -18,8 +51,13 @@ mixin svgLogo(height, soundholeColor, stringsColor, stringWidth, isHeaderImg=fal
 
 mixin card() 
   .card
-    img(src='https://via.placeholder.com/250')
+    //- img(src='https://via.placeholder.com/250')
     //- +svgLogo(null, 'black', 'black', '5')
+    svg(xmlns='http://www.w3.org/2000/svg' id='svg-logo' viewBox='0 0 512 438')
+      path(class='soundhole' fill='black' d='M257.94 47.137c94.366 0 170.866 76.672 170.866 171.252 0 94.581-76.5 171.253-170.866 171.253-94.367 0-170.866-76.672-170.866-171.253 0-94.58 76.499-171.252 170.866-171.252zm0 29.999c-77.783.001-140.866 63.226-140.866 141.253 0 78.027 63.083 141.253 140.866 141.253 77.783 0 140.866-63.226 140.866-141.253 0-78.027-63.083-141.252-140.866-141.253z')
+      path(class='strings' d='M5 231.689L383.403 4.5l-1.092.658M30.389 272.805l378.403-227.19-1.092.659M56.198 312.496L434.602 85.307l-1.093.658M79.143 353.05l378.404-227.189-1.093.658M104.549 393.47l378.403-227.19-1.092.659M128.666 434.222l378.403-227.19-1.093.659' stroke-linecap='round' stroke-linejoin='round' stroke='gray' stroke-width='5')
+    if block
+      block
 
 
 header#header
@@ -45,71 +83,98 @@ header#header
         source(src="https://storage.googleapis.com/coverr-main/mp4/Strum-Away.mp4" type="video/mp4")
       //- .poster.hidden
         img(src="https://storage.googleapis.com/coverr-public/poster/Strum-Away.jpg" alt="")
-  
 
+  
 section#section1
   p Section 1
 
-  .product-cards
-    - for (var x = 0; x < 3; x++)
-      +card()
+  .testimonial-container
+    - for (let i = 0; i < 7; i++)
+      .testimonial
+        .testimonial-img
+          .logo-soundhole(class=`testimonial-${i}`)
+        .testimonial-quote
+          p #{testimonials[i].quote}
+          p #{testimonials[i].author}
 
-  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis lacus metus. Vestibulum consequat augue sed magna ullamcorper lacinia. In iaculis augue augue, at sollicitudin nibh rutrum nec. Integer posuere, mauris sed feugiat porta, urna libero dapibus nulla, sit amet dictum quam lorem nec est. Maecenas ullamcorper lorem vitae nisi posuere, quis consectetur sem auctor. Quisque velit justo, congue et diam eu, hendrerit tristique lorem. Etiam vehicula, neque vel efficitur pulvinar, metus eros volutpat ligula, nec aliquet dolor leo ut nulla. Quisque sollicitudin faucibus eros, id dictum diam convallis ut.
-  p Mauris eget gravida augue. Mauris pharetra non ex nec scelerisque. Sed et ultricies neque, id faucibus dui. Aliquam posuere euismod tellus in elementum. Ut commodo leo ornare, euismod felis vel, mollis ante. Cras vestibulum, elit eget condimentum bibendum, justo lectus venenatis ex, sit amet posuere lacus est id elit. Vestibulum fringilla elit tortor, eget luctus dui ornare ac. Etiam volutpat dui ut sapien fermentum consequat. Vestibulum vitae dolor faucibus, eleifend neque in, varius elit. Quisque non sodales justo, in luctus mauris. Aenean fermentum magna id elementum ornare. Fusce eu bibendum lorem.
-  
 section#section2
   p Section 2
 
-  .testimonial-container
-    .testimonial.fade
-      .testimonial-img-container
-        .testimonial-img
-          .round-img.segovia
-      .testimonial-quote
-        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
-        p - Andres S.
+  .product-cards
+    - for (var x = 0; x < 3; x++)
+      .card
+        .card-header: p classic strings
+        .card-logo
+          .logo-soundhole
+        .card-footer: p one set
 
-    .testimonial.fade
-      .testimonial-img-container
-        .testimonial-img
-         .round-img.tarrega
-      .testimonial-quote
-        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
-        p - Francisco T.
 
-    .testimonial.fade
-      .testimonial-img-container
-        .testimonial-img
-         .round-img.barrios
-      .testimonial-quote
-        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
-        p - Agustín B.
-
-    .testimonial.fade
-      .testimonial-img-container
-        .testimonial-img
-         .round-img.sor
-      .testimonial-quote
-        p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc.
-        p - Fernando S.
-
-  .logo-container
-    .logo
-      //- img.logo-img(src='https://via.placeholder.com/250')
-
-      
-
-  p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc. Proin pellentesque, justo eu interdum tincidunt, lorem nisi accumsan dolor, at ultricies ex odio id nibh. Donec vel libero eget enim gravida semper. Maecenas vulputate odio vel lorem egestas interdum. Ut faucibus erat at justo sodales, sit amet lobortis nibh ornare. Mauris aliquet ex justo, vitae vehicula tellus maximus id. Nulla non euismod eros. Nam porttitor pulvinar dolor, sed consequat augue. Phasellus felis risus, aliquam ac condimentum sed, vestibulum non elit. Sed elementum bibendum tellus sit amet pulvinar.
-  p  Nullam laoreet turpis arcu, in iaculis mauris varius ultrices. Donec suscipit eleifend tortor, sit amet tristique magna commodo ac. Maecenas maximus purus lorem, at pellentesque ipsum auctor eget. Fusce molestie magna ac porttitor porta. Fusce ante urna, commodo eget commodo a, lacinia convallis tellus. Vivamus interdum eu augue non blandit. Nam ante tellus, dapibus ut ipsum vel, tincidunt laoreet urna. In sit amet pellentesque mauris, sit amet aliquet magna. In rutrum non sapien ut tincidunt. Praesent non nibh efficitur, malesuada velit vel, placerat purus. Etiam eget dui nec ligula condimentum ultrices.
+  
 
 section#section3
   p Section 3
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis lacus metus. Vestibulum consequat augue sed magna ullamcorper lacinia. In iaculis augue augue, at sollicitudin nibh rutrum nec. Integer posuere, mauris sed feugiat porta, urna libero dapibus nulla, sit amet dictum quam lorem nec est. Maecenas ullamcorper lorem vitae nisi posuere, quis consectetur sem auctor. Quisque velit justo, congue et diam eu, hendrerit tristique lorem. Etiam vehicula, neque vel efficitur pulvinar, metus eros volutpat ligula, nec aliquet dolor leo ut nulla. Quisque sollicitudin faucibus eros, id dictum diam convallis ut.
+  p Mauris eget gravida augue. Mauris pharetra non ex nec scelerisque. Sed et ultricies neque, id faucibus dui. Aliquam posuere euismod tellus in elementum. Ut commodo leo ornare, euismod felis vel, mollis ante. Cras vestibulum, elit eget condimentum bibendum, justo lectus venenatis ex, sit amet posuere lacus est id elit. Vestibulum fringilla elit tortor, eget luctus dui ornare ac. Etiam volutpat dui ut sapien fermentum consequat. Vestibulum vitae dolor faucibus, eleifend neque in, varius elit. Quisque non sodales justo, in luctus mauris. Aenean fermentum magna id elementum ornare. Fusce eu bibendum lorem.
+  p Vestibulum facilisis ante in mollis tristique. Maecenas lacinia, arcu eu lacinia scelerisque, risus leo efficitur nulla, pharetra euismod urna urna non nunc. Proin pellentesque, justo eu interdum tincidunt, lorem nisi accumsan dolor, at ultricies ex odio id nibh. Donec vel libero eget enim gravida semper. Maecenas vulputate odio vel lorem egestas interdum. Ut faucibus erat at justo sodales, sit amet lobortis nibh ornare. Mauris aliquet ex justo, vitae vehicula tellus maximus id. Nulla non euismod eros. Nam porttitor pulvinar dolor, sed consequat augue. Phasellus felis risus, aliquam ac condimentum sed, vestibulum non elit. Sed elementum bibendum tellus sit amet pulvinar.
+  p  Nullam laoreet turpis arcu, in iaculis mauris varius ultrices. Donec suscipit eleifend tortor, sit amet tristique magna commodo ac. Maecenas maximus purus lorem, at pellentesque ipsum auctor eget. Fusce molestie magna ac porttitor porta. Fusce ante urna, commodo eget commodo a, lacinia convallis tellus. Vivamus interdum eu augue non blandit. Nam ante tellus, dapibus ut ipsum vel, tincidunt laoreet urna. In sit amet pellentesque mauris, sit amet aliquet magna. In rutrum non sapien ut tincidunt. Praesent non nibh efficitur, malesuada velit vel, placerat purus. Etiam eget dui nec ligula condimentum ultrices.
   p Phasellus nibh libero, mollis et porta sit amet, lacinia id ligula. Duis sed felis et sem porttitor pharetra. Nulla volutpat sollicitudin magna, eget gravida dolor fringilla sed. Praesent ut ipsum ipsum. Quisque posuere sodales orci sit amet rhoncus. Proin feugiat orci ut turpis euismod condimentum vel tempor lorem. Etiam accumsan elit in magna sollicitudin convallis. In hac habitasse platea dictumst. Curabitur facilisis libero a sagittis vestibulum. Fusce a magna vitae libero molestie tincidunt et fermentum nulla. Donec pretium dolor ut metus porttitor, ac sollicitudin ante consectetur. Duis gravida vehicula ex, ut gravida nunc aliquam ac. Vestibulum auctor magna sit amet convallis porttitor. Nullam pretium vel dolor id sodales. Etiam mattis semper dolor.
 
   form#form(action="https://www.freecodecamp.com/email-submit" method="post")
     label(for="email") Email: 
     input#email(type='email' name='email' placeholder='Email' required)
     input#submit(type='submit')
+
+footer(style='min-height:30px; width:100%;margin-top:30px;')
+
+
+  //- ===== Image attributions =============
+
+  p(style='font-size: 0.9rem;font-style: italic;')
+    a(href='https://www.flickr.com/photos/39400957@N03/12256046533') "Jason Mraz & Raining Jane at NAMM 1/25/2014 #17" 
+    .
+      and 
+    a(href='https://www.flickr.com/photos/39400957@N03/11476390335') "Rebecca Pidgeon 12/20/2013 #2" 
+    span by #[a(href='https://www.flickr.com/photos/39400957@N03') jus10h ]
+    .
+     are licensed under 
+    a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' style='margin-right: 5px;') CC BY 2.0
+    a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;')
+      img(src='https://search.creativecommons.org/static/img/cc_icon.svg' style='height: inherit;margin-right: 3px;display: inline-block;')
+      img(src='https://search.creativecommons.org/static/img/cc-by_icon.svg' style='height: inherit;margin-right: 3px;display: inline-block;')
+  
+
+  p(style="font-size: 0.9rem;font-style: italic;")
+    a(href="https://www.flickr.com/photos/52498302@N08/37694010252") "Gabriela Battistini - Cierre Guitarras Del Mundo 2017" 
+    .
+      and 
+    a(href="https://www.flickr.com/photos/52498302@N08/37677776826") "Eduardo Fernández - Cierre Guitarras Del Mundo 2017" 
+    span by #[a(href="https://www.flickr.com/photos/52498302@N08") Ministerio de Cultura de la Nación ]
+    .
+     are licensed under 
+    a(href="https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&atype=html" style='margin-right: 5px;') CC BY-SA 2.0 
+    a(href="https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&atype=html" target='_blank' rel='noopener noreferrer' style='display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;')
+      img(src="https://search.creativecommons.org/static/img/cc_icon.svg" style='height: inherit;margin-right: 3px;display: inline-block;')
+      img(src="https://search.creativecommons.org/static/img/cc-by_icon.svg" style='height: inherit;margin-right: 3px;display: inline-block;')
+      img(src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" style='height: inherit;margin-right: 3px;display: inline-block;')
+  
+  p(style="font-size: 0.9rem;font-style: italic;")
+    a(href="https://www.flickr.com/photos/61769013@N06/5676875263") "Homenajes Sonoros - Piazzolla" 
+    span by #[a(href="https://www.flickr.com/photos/61769013@N06") Gescaem], 
+    a(href="https://www.flickr.com/photos/129072575@N05/48994864191") "Jueves Flamencos de la Fundación Cajasol en Sevilla: Juan Carlos Romero (10)" 
+    span by #[a(href="https://www.flickr.com/photos/129072575@N05") fundacioncajasol], 
+    .
+      and 
+    a(href="https://www.flickr.com/photos/65219527@N06/11186848285") "Luis Regidor in the Scoring Studio" 
+    span by #[a(href="https://www.flickr.com/photos/65219527@N06") Berklee Valencia Campus ]
+    .
+      are licensed under 
+    a(href="https://creativecommons.org/licenses/by-nc-nd/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;") CC BY-NC-ND 2.0
+    a(href="https://creativecommons.org/licenses/by-nc-nd/2.0/?ref=ccsearch&atype=html" target="_blank" rel="noopener noreferrer" style="display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;")
+      img(style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg")
+      img(style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg")
+      img(style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg")
+      img(style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg")
+  
 
 button#custom_fcc_foldout_toggler !{svgPwrSymbol} TEST
 
