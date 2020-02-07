@@ -463,7 +463,13 @@ section {
   }
 }
 
+.svg-test-container {
+  height: auto;
+  width: 100%;
+  max-width: 350px;
+  outline: 1px solid red;
 
+}
 
 
 
