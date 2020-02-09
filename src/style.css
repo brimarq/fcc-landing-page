@@ -11,13 +11,7 @@ $color-new-fcc-toggler-btn-bg: hsl(227, 12%, 30%);
 $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px 20px blue) grayscale(50%) hue-rotate(90deg) invert(75%) opacity(25%) saturate(30%) sepia(60%);
 
 
-$img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
-$img-gabrielab: url("https://live.staticflickr.com/4473/37694010252_4358929aeb_c.jpg");
-$img-jasonm: url("https://live.staticflickr.com/3691/12256046533_1ce12441be_c.jpg");
-$img-juanr: url("https://live.staticflickr.com/65535/48994864191_4a523436de.jpg");
-$img-luisr: url("https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg");
-$img-rebeccap: url("https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg");
-$img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg");
+
 
 @define-mixin button {
   appearance: none;
@@ -39,124 +33,15 @@ $img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jp
   padding-top: calc(0.5em - 1px);
 }
 
-@define-mixin soundhole $soundholeSize, $soundholeBorderWidth, $soundholeBorderColor, $stringLength, $stringWidth, $stringColor, $stringSpaceColor, $soundholeBackground {
-  position: relative;
-  height: $soundholeSize;
-  /* height: auto; */
-  width: $soundholeSize;
-  padding-top: 100%; /* Gives height to div with no content */
-  /* background: blue; */
-  /* border: $soundholeBorderWidth solid $soundholeBorderColor; */
-  border-radius: 50%;
-  outline: 1px solid lime;
-  /* background-image: $bg-img-sor; */
-
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    height: 100%;
-    width: 100%;
-    border: $soundholeBorderWidth solid $soundholeBorderColor;
-    border-radius: inherit;
-    outline: 1px solid blue;
-  }
-
-  &::after {
-    $strSpace: calc(100% / 6);
-    $strPadding: calc(($strSpace - $stringWidth) / 2);
-    $strEnd: calc($strPadding + $stringWidth);
-    content: "";
-    position: absolute;
-    /* height: 100%; */
-    height: calc(100% - ($soundholeBorderWidth * 2));
-    width: $stringLength;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-0.08turn);
-    background: repeating-linear-gradient(
-      $stringSpaceColor 0% $strPadding, 
-      $stringColor calc($strPadding + 1%) $strEnd, 
-      $stringSpaceColor calc($strEnd + 1%) $strSpace
-    );
-  }
-
-  & .round-img {
-    /* position: relative; */
-    border-radius: 50%;
-    /* padding-top: 100%; */
-    height: 100%;
-    width: 100%;
-    border: $soundholeBorderWidth solid transparent;
-    background-clip: padding-box;
-    background-repeat: no-repeat;
-    z-index: 1;
-  }
-
-
-  /* & img {
-    position: relative;
-    object-fit: none;
-    object-position: 50% 50%;
-    border-radius: 50%;
-    display: block;
-    overflow: hidden;
-    height: auto;
-    width: 100%;
-    border: $soundholeBorderWidth solid transparent;
-    z-index: 1;
-  } */
-}
-
-@define-mixin logo-soundhole $soundhole-color, $string-color {
-  position: relative;
-  /* box-sizing: content-box; */
-  height: 0;
-  width: 100%;
-  /* padding-top: calc(100% * 438/512); */
-  padding-bottom: 85.546875%;
-  $soundhole-start: 58%;
-  $soundhole-end: calc($soundhole-start + 12%);
-  background-image: radial-gradient(
-    circle farthest-side,
-    transparent $soundhole-start,
-    $soundhole-color calc($soundhole-start + 0.5%) $soundhole-end,
-    transparent calc($soundhole-end + 0.5%)
-  );
-
-  &::before {
-    position: absolute;
-    content: '';
-    height: 67%;
-    width: 84%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg);
-    /* outline: 1px solid lime; */
-    /* $string-color: orange; */
-    $string-width: 1.5%;
-    $string-space: calc(100% / 6);
-    $string-start: calc(($string-space - $string-width) / 2 - 0.5%);
-    $string-end: calc($string-start + $string-width);
-
-    background-image: repeating-linear-gradient(
-      transparent 0% $string-start,
-      $string-color calc($string-start + 0.5%) $string-end,
-      transparent calc($string-end + 0.5%) $string-space
-    );
-  }
-}
-
 @define-mixin logo-soundhole-img {
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    clip-path: circle(32% at 50%);
+    clip-path: circle(31.5% at 50%);
     background-repeat: no-repeat;
     @mixin-content;
   }
@@ -212,8 +97,14 @@ nav#nav-bar {
   color: white;
 
   & .nav-bar-left {
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    & a {
+      color: white;
+    }
     /* & > img {
       display: none;
     } */
@@ -296,62 +187,68 @@ section {
   align-items: flex-start;
 
   & .testimonial-img {
+    $img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
+    $img-gabrielab: url("https://live.staticflickr.com/4473/37694010252_4358929aeb_c.jpg");
+    $img-jasonm: url("https://live.staticflickr.com/3691/12256046533_1ce12441be_c.jpg");
+    $img-juanr: url("https://live.staticflickr.com/65535/48994864191_4a523436de.jpg");
+    $img-luisr: url("https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg");
+    $img-rebeccap: url("https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg");
+    $img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg");
+    position: relative;
     width: 100%;
     max-width: 200px;
     height: auto;
     margin-right: 30px;
+    --color-logo-soundhole: dodgerblue;
+    --color-logo-strings: lightsteelblue;
 
-    & .logo-soundhole {
-      @mixin logo-soundhole dodgerblue, lightsteelblue;
-
-      &.testimonial-0 {
-        @mixin logo-soundhole-img {
-          background-image: $img-cristos;
-          background-position: right bottom 115%;
-          background-size: 95%;
-        }
+    &.testimonial-0 {
+      @mixin logo-soundhole-img {
+        background-image: $img-cristos;
+        background-position: right bottom 115%;
+        background-size: 95%;
       }
-      &.testimonial-1 {
-        @mixin logo-soundhole-img {
-          background-image: $img-gabrielab;
-          background-position: center bottom 20%;
-          background-size: 235%;
-        }
+    }
+    &.testimonial-1 {
+      @mixin logo-soundhole-img {
+        background-image: $img-gabrielab;
+        background-position: center bottom 20%;
+        background-size: 235%;
       }
-      &.testimonial-2 {
-        @mixin logo-soundhole-img {
-          background-image: $img-jasonm;
-          background-position: right 40% bottom 60%;
-          background-size: 201%;
-        }
+    }
+    &.testimonial-2 {
+      @mixin logo-soundhole-img {
+        background-image: $img-jasonm;
+        background-position: right 40% bottom 60%;
+        background-size: 201%;
       }
-      &.testimonial-3 {
-        @mixin logo-soundhole-img {
-          background-image: $img-juanr;
-          background-position: center top 127%;
-          background-size: 101%;
-        }
+    }
+    &.testimonial-3 {
+      @mixin logo-soundhole-img {
+        background-image: $img-juanr;
+        background-position: center top 115%;
+        background-size: 101%;
       }
-      &.testimonial-4 {
-        @mixin logo-soundhole-img {
-          background-image: $img-luisr;
-          background-position: left 38% top 117%;
-          background-size: 125%;
-        }
+    }
+    &.testimonial-4 {
+      @mixin logo-soundhole-img {
+        background-image: $img-luisr;
+        background-position: left 38% top 117%;
+        background-size: 125%;
       }
-      &.testimonial-5 {
-        @mixin logo-soundhole-img {
-          background-image: $img-rebeccap;
-          background-position: right 37% bottom 185%;
-          background-size: 69%;
-        }
+    }
+    &.testimonial-5 {
+      @mixin logo-soundhole-img {
+        background-image: $img-rebeccap;
+        background-position: right 37% bottom 185%;
+        background-size: 69%;
       }
-      &.testimonial-6 {
-        @mixin logo-soundhole-img {
-          background-image: $img-eduardof;
-          background-position: left 55% bottom 161%;
-          background-size: 157%;
-        }
+    }
+    &.testimonial-6 {
+      @mixin logo-soundhole-img {
+        background-image: $img-eduardof;
+        background-position: left 55% bottom 161%;
+        background-size: 157%;
       }
     }
   }
@@ -377,39 +274,6 @@ section {
   to {opacity: 1}
 }
 
-.logo-container {
-  position: relative;
-  margin: 100px;
-  outline: 1px solid red;
-  width: 250px;
-  height: 250px;
-  padding: 20px;
-
-  & .logo {
-    @mixin soundhole 100%, 25px, gray, 150%, 3px, hsl(120, 100%, 50%), hsla(120, 100%, 50%, 0), none;
-
-    & img {
-      z-index: 0;
-    }
-  }
-  
-}
-  
-/* .product-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  & .card {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    outline: 1px solid lime;
-    margin: 0 1em;
-  }
-} */
-
-
 
 .product-cards {
   display: flex;
@@ -425,49 +289,26 @@ section {
     margin: 1em;
     outline: 1px solid red;
 
-    & .card-header {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    
-    & .card-logo {
-      position: relative;
-      height: 0;
-      width: 80%;
-      padding-top: 100%;
-      margin: auto;
-
-      & .logo-soundhole {
-        @mixin logo-soundhole gray, lime;
-        position: absolute;
-        bottom: 5%;
-        /* bottom: 0; */
-
-      }
-    }
-
-    & .card-footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-
-    /* & .card-logo {
-      @mixin logo-soundhole gray, lime;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translate(-50%, 0)
-    } */
   }
 }
 
+.row {
+  display: flex;
+}
+
 .svg-test-container {
+  margin: 10px;
   height: auto;
   width: 100%;
-  max-width: 350px;
+  max-width: 512px;
   outline: 1px solid red;
+  &.symbols1 {
+    --color-card-title: red;
+    --color-card-subtitle: green;
+    --color-logo-soundhole: blue;
+    --color-logo-strings: gray;
+    --color-card-footer: orange;
+  }
 
 }
 
