@@ -1,37 +1,7 @@
 - const svgPwrSymbol = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' preserveAspectRatio='xMinYMin meet'><path d='M136.68,123.21A34.59,34.59,0,0,0,91.31,71a251.26,251.26,0,1,0,327.85-1.32,34.59,34.59,0,0,0-44.95,52.6,181.94,181.94,0,0,1,63.86,138.49c0,100.39-81.68,182.07-182.07,182.07S73.93,361.13,73.93,260.74A182.09,182.09,0,0,1,136.68,123.21Z'/><path d='M290.59,277V34.59a34.59,34.59,0,0,0-69.19,0V277A34.59,34.59,0,1,0,290.59,277Z'/></svg>`;
 
 
--
-  const testimonials = [
-    {
-      author: 'Cristo S.',
-      quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsa explicabo alias veniam, eos impedit quia placeat non dolor mollitia!',
-    },
-    {
-      author: 'Gabriela B.',
-      quote: 'Neque rerum, perspiciatis tempora totam iste laudantium dignissimos reprehenderit aut amet repudiandae quisquam. Magnam laboriosam quam cupiditate veritatis error tempora iste nulla deleniti libero aliquid.',
-    },
-    {
-      author: 'Jason M.',
-      quote: 'Inventore dolore fugit temporibus. Amet debitis ipsa voluptas quos quas officia dolor? Minima sapiente pariatur adipisci omnis fugiat, quisquam praesentium ab consequuntur totam velit magni ipsum molestias aliquid autem amet dolorum magnam neque doloremque iste vero deserunt cumque?',
-    },
-    {
-      author: 'Juan R.',
-      quote: 'Eos unde sit totam pariatur enim tempora eligendi, animi, quo, maxime omnis officia aut cumque consectetur possimus ea facere? Nesciunt repellat, asperiores minima similique rerum dignissimos officia, delectus nemo hic repudiandae sapiente iste ex impedit obcaecati! Vitae, perferendis?',
-    },
-    {
-      author: 'Luis R.',
-      quote: 'Fuga, amet vero quasi est dolor sit maiores nostrum accusamus omnis! Mollitia aspernatur nostrum quas repudiandae tempore cupiditate optio, ad labore ex quisquam eaque ea harum quia alias!',
-    },
-    {
-      author: 'Rebecca P.',
-      quote: 'Laboriosam, unde. Eos temporibus dolore animi quas delectus deleniti incidunt totam rem nemo libero quos assumenda, doloribus est repellat iure reiciendis vel similique veritatis, ad deserunt iusto?',
-    },
-    {
-      author: 'Eduardo F.',
-      quote: 'Ducimus accusamus magni aut nobis veniam rem quidem consequatur reiciendis possimus. Quis rem animi nulla cupiditate eligendi officia in deserunt sint eaque ullam consequuntur debitis id inventore alias tempore maiores itaque asperiores reiciendis aspernatur, fuga quod impedit adipisci iusto eveniet?'
-    }
-  ];
+
 
 
 svg(xmlns='http://www.w3.org/2000/svg' id='svg-card-label' style='display:none;')
@@ -112,14 +82,55 @@ section#section1
   p Section 1
 
   .testimonial-container
-    - for (let i = 0; i < 7; i++)
+    -
+      const testimonials = [
+        {
+          author: 'Cristo S.',
+          quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsa explicabo alias veniam, eos impedit quia placeat non dolor mollitia!',
+        },
+        {
+          author: 'Gabriela B.',
+          quote: 'Neque rerum, perspiciatis tempora totam iste laudantium dignissimos reprehenderit aut amet repudiandae quisquam. Magnam laboriosam quam cupiditate veritatis error tempora iste nulla deleniti libero aliquid.',
+        },
+        {
+          author: 'Jason M.',
+          quote: 'Inventore dolore fugit temporibus. Amet debitis ipsa voluptas quos quas officia dolor? Minima sapiente pariatur adipisci omnis fugiat, quisquam praesentium ab consequuntur totam velit magni ipsum molestias aliquid autem amet dolorum magnam neque doloremque iste vero deserunt cumque?',
+        },
+        {
+          author: 'Juan R.',
+          quote: 'Eos unde sit totam pariatur enim tempora eligendi, animi, quo, maxime omnis officia aut cumque consectetur possimus ea facere? Nesciunt repellat, asperiores minima similique rerum dignissimos officia, delectus nemo hic repudiandae sapiente iste ex impedit obcaecati! Vitae, perferendis?',
+        },
+        {
+          author: 'Luis R.',
+          quote: 'Fuga, amet vero quasi est dolor sit maiores nostrum accusamus omnis! Mollitia aspernatur nostrum quas repudiandae tempore cupiditate optio, ad labore ex quisquam eaque ea harum quia alias!',
+        },
+        {
+          author: 'Rebecca P.',
+          quote: 'Laboriosam, unde. Eos temporibus dolore animi quas delectus deleniti incidunt totam rem nemo libero quos assumenda, doloribus est repellat iure reiciendis vel similique veritatis, ad deserunt iusto?',
+        },
+        {
+          author: 'Eduardo F.',
+          quote: 'Ducimus accusamus magni aut nobis veniam rem quidem consequatur reiciendis possimus. Quis rem animi nulla cupiditate eligendi officia in deserunt sint eaque ullam consequuntur debitis id inventore alias tempore maiores itaque asperiores reiciendis aspernatur, fuga quod impedit adipisci iusto eveniet?'
+        }
+      ];
+    //- for lowercase author name
+    //- author.match(/\w/g).join('').toLowerCase();
+    //- - for (let i = 0; i < 7; i++)
+    //-   .testimonial
+    //-     .testimonial-img(class=`testimonial-${i}`)
+    //-       svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390.12 341.794' preserveAspectRatio='xMidYMin slice' style='display:block;box-sizing:content-box;height:0.1px;width:100%;padding-bottom:87.61%;overflow:visible;')
+    //-         use(href='#svg-card-logo')
+    //-     .testimonial-quote
+    //-       p #{testimonials[i].quote}
+    //-       p #{testimonials[i].author}
+    each item in testimonials
       .testimonial
-        .testimonial-img(class=`testimonial-${i}`)
+        .testimonial-img(class=`img-${item.author.match(/\w/g).join('').toLowerCase()}`)
           svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390.12 341.794' preserveAspectRatio='xMidYMin slice' style='display:block;box-sizing:content-box;height:0.1px;width:100%;padding-bottom:87.61%;overflow:visible;')
             use(href='#svg-card-logo')
         .testimonial-quote
-          p #{testimonials[i].quote}
-          p #{testimonials[i].author}
+          p #{item.quote}
+          p #{item.author}
 
 section#section2
   p Section 2

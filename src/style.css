@@ -174,12 +174,12 @@ section {
   padding: 0 10px;
 }
 
-.testimonials {
+/* .testimonials {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .testimonial {
   display: flex;
@@ -202,49 +202,49 @@ section {
     --color-logo-soundhole: dodgerblue;
     --color-logo-strings: lightsteelblue;
 
-    &.testimonial-0 {
+    &.img-cristos {
       @mixin logo-soundhole-img {
         background-image: $img-cristos;
         background-position: right bottom 115%;
         background-size: 95%;
       }
     }
-    &.testimonial-1 {
+    &.img-gabrielab {
       @mixin logo-soundhole-img {
         background-image: $img-gabrielab;
         background-position: center bottom 20%;
         background-size: 235%;
       }
     }
-    &.testimonial-2 {
+    &.img-jasonm {
       @mixin logo-soundhole-img {
         background-image: $img-jasonm;
         background-position: right 40% bottom 60%;
         background-size: 201%;
       }
     }
-    &.testimonial-3 {
+    &.img-juanr {
       @mixin logo-soundhole-img {
         background-image: $img-juanr;
         background-position: center top 115%;
         background-size: 101%;
       }
     }
-    &.testimonial-4 {
+    &.img-luisr {
       @mixin logo-soundhole-img {
         background-image: $img-luisr;
         background-position: left 38% top 117%;
         background-size: 125%;
       }
     }
-    &.testimonial-5 {
+    &.img-rebeccap {
       @mixin logo-soundhole-img {
         background-image: $img-rebeccap;
         background-position: right 37% bottom 185%;
         background-size: 69%;
       }
     }
-    &.testimonial-6 {
+    &.img-eduardof {
       @mixin logo-soundhole-img {
         background-image: $img-eduardof;
         background-position: left 55% bottom 161%;
