@@ -311,6 +311,10 @@ section {
     --color-logo-strings: gray;
     --color-card-footer: orange;
   }
+  &.symbol-logo {
+    --color-logo-strings: url(#gradient-strings);
+    /* background-image: linear-gradient(-30deg, black, gray, black); */
+  }
 
 }
 
