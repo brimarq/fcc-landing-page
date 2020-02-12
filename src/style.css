@@ -43,6 +43,8 @@ $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px
     width: 100%;
     clip-path: circle(31.5% at 50%);
     background-repeat: no-repeat;
+    filter: sepia(90%);
+    
     @mixin-content;
   }
 }
@@ -183,6 +185,11 @@ section {
 
 .testimonial {
   display: flex;
+  /* text-align: center; */
+  /* max-width: 600px; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  margin: 0 auto 1px auto;
   justify-content: center;
   align-items: flex-start;
 
@@ -194,11 +201,20 @@ section {
     $img-luisr: url("https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg");
     $img-rebeccap: url("https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg");
     $img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg");
+    /* display: inline-block; */
+    /* float: left; */
     position: relative;
+    height: auto;
     width: 100%;
     max-width: 200px;
-    height: auto;
-    margin-right: 30px;
+
+    /* box-sizing: content-box;
+    height: 0.1px;
+    padding-bottom:87.61%;
+    overflow:visible;  */
+    
+    /* shape-outside: url(#svg-card-logo); */
+    margin-right: 20px;
     --color-logo-soundhole: dodgerblue;
     --color-logo-strings: lightsteelblue;
 
@@ -233,7 +249,7 @@ section {
     &.img-luisr {
       @mixin logo-soundhole-img {
         background-image: $img-luisr;
-        background-position: left 38% top 117%;
+        background-position: left 38% top 105%;
         background-size: 125%;
       }
     }
@@ -254,7 +270,8 @@ section {
   }
   
   & .testimonial-quote {
-    max-width: 500px;
+    /* display: inline-block; */
+    max-width: 400px;
     & p {
       /* margin: 0; */
       margin-bottom: 0;
@@ -281,7 +298,6 @@ section {
   --color-logo-soundhole: $color-card;
   /* --color-logo-strings: url(#gradient-strings); */
   --color-logo-strings: $color-card;
-  /* --color-gradient-strings: hsl(248, 31%, 49%); */
   --color-card-subtitle: hsla(51, 100%, 13%, 0.8);
   --color-card-footer: hsla(51, 100%, 13%, 0.8);
   --color-card-title: $color-card;
@@ -298,7 +314,6 @@ section {
     );
     /* radial-gradient(circle at 50.1% 56.5%, transparent 0%, $color-card 34%, $color-card-shadow 34.5%, transparent 37%); */
   background-color: hsla(51, 100%, 95%, 1);
-  /* background-color: hsla(51, 100%, 96%, 1); */
   box-shadow: inset -1px -1px 3px hsla(0, 0%, 0%, 0.2);
   border-radius: 8px;
 }
