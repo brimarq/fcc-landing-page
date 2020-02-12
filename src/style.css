@@ -276,20 +276,66 @@ section {
   to {opacity: 1}
 }
 
+@define-mixin product-card $color-card {
+  /* --color-logo-soundhole: hsla(51, 100%, 95%, 1); */
+  --color-logo-soundhole: $color-card;
+  /* --color-logo-strings: url(#gradient-strings); */
+  --color-logo-strings: $color-card;
+  /* --color-gradient-strings: hsl(248, 31%, 49%); */
+  --color-card-subtitle: hsla(51, 100%, 13%, 0.8);
+  --color-card-footer: hsla(51, 100%, 13%, 0.8);
+  --color-card-title: $color-card;
+  $color-card-shadow: hsla(51, 100%, 13%, .2);
+  /* $color-card-shadow: hsla(0, 0%, 0%, .9); */
+  background: 
+    linear-gradient(
+      57deg, 
+      $color-card-shadow, transparent 37% 57%, $color-card-shadow
+    ), 
+    linear-gradient(
+      -45deg, 
+      $color-card-shadow, transparent 37% 57%, $color-card-shadow
+    );
+    /* radial-gradient(circle at 50.1% 56.5%, transparent 0%, $color-card 34%, $color-card-shadow 34.5%, transparent 37%); */
+  background-color: hsla(51, 100%, 95%, 1);
+  /* background-color: hsla(51, 100%, 96%, 1); */
+  box-shadow: inset -1px -1px 3px hsla(0, 0%, 0%, 0.2);
+  border-radius: 8px;
+}
 
 .product-cards {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  $red-card: 	hsl(358, 84%, 58%);
+  $blue-card: hsl(197, 93%, 44%);
+  $purple-card: 	hsl(248, 31%, 59%);
+  /* $red-card: 	hsl(358, 84%, 78%);
+  $blue-card: hsl(197, 93%, 64%);
+  $purple-card: 	hsl(248, 31%, 79%); */
+
 
   & .card {
     position: relative;
     /* display: inline-block; */
     width: 100%;
-    max-width: 250px;
+    max-width: 350px;
     height: auto;
     margin: 1em;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
+    
+
+    &.tension-normal{
+      @mixin product-card $red-card;
+    }
+
+    &.tension-hard{
+      @mixin product-card $blue-card;
+    }
+
+    &.tension-xhard{
+      @mixin product-card hsla(248, 31%, 59%);
+    }
 
   }
 }

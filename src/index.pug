@@ -5,7 +5,7 @@ svg(xmlns='http://www.w3.org/2000/svg' id='svg-card-label' width='0' height='0' 
   defs
     linearGradient(id='gradient-strings' x1='0' x2='0' y1='0' y2='.01865' gradientUnits='objectBoundingBox' spreadMethod='reflect' gradientTransform='rotate(-33.5)')
       stop(offset='0%' stop-color='white')
-      stop(offset='60%' stop-color='hsl(0, 0%, 40%)')
+      stop(offset='60%' stop-color='hsl(0, 0%, 60%)')
       stop(offset='100%' stop-color='white')
   
   symbol(id='svg-card-logo' viewBox='0 0 390.12 341.794' width='390.12' height='341.794')
@@ -132,7 +132,7 @@ section#section2
   p Section 2
   .product-cards
     each item in ['normal', 'hard', 'xhard']
-      .card
+      .card(class=`tension-${item}`)
         +svgCard(item)
 
 
