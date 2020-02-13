@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
   useCustomFccToggler();
-  // testimonialCarousel();
+  testimonialCarousel();
 
   // Replace original fCC test suite toggler with one that doesn't clash with page elements
   async function useCustomFccToggler() {

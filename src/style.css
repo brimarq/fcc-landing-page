@@ -43,7 +43,7 @@ $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px
     width: 100%;
     clip-path: circle(31.5% at 50%);
     background-repeat: no-repeat;
-    filter: sepia(90%);
+    filter: sepia(.5);
     
     @mixin-content;
   }
@@ -172,26 +172,28 @@ nav#nav-bar {
 
 }
 
-section {
+section, footer {
   padding: 0 10px;
 }
 
-/* .testimonials {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
+.testimonial-container {
+  margin: 20px 0 20px 0;
+}
 
 .testimonial {
-  display: flex;
-  /* text-align: center; */
-  /* max-width: 600px; */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  margin: 0 auto 1px auto;
+  display: none;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto 0 auto;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+
+  @media (min-width: 376px) {
+    margin: 0 auto 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
   & .testimonial-img {
     $img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
@@ -215,8 +217,8 @@ section {
     
     /* shape-outside: url(#svg-card-logo); */
     margin-right: 20px;
-    --color-logo-soundhole: dodgerblue;
-    --color-logo-strings: lightsteelblue;
+    --color-logo-soundhole: hsl(51, 100%, 23%);
+    --color-logo-strings: hsl(51, 100%, 43%);
 
     &.img-cristos {
       @mixin logo-soundhole-img {
@@ -230,6 +232,7 @@ section {
         background-image: $img-gabrielab;
         background-position: center bottom 20%;
         background-size: 235%;
+        
       }
     }
     &.img-jasonm {
@@ -237,6 +240,7 @@ section {
         background-image: $img-jasonm;
         background-position: right 40% bottom 60%;
         background-size: 201%;
+        
       }
     }
     &.img-juanr {
@@ -244,6 +248,7 @@ section {
         background-image: $img-juanr;
         background-position: center top 115%;
         background-size: 101%;
+        
       }
     }
     &.img-luisr {
@@ -251,6 +256,7 @@ section {
         background-image: $img-luisr;
         background-position: left 38% top 105%;
         background-size: 125%;
+        
       }
     }
     &.img-rebeccap {
@@ -258,23 +264,28 @@ section {
         background-image: $img-rebeccap;
         background-position: right 37% bottom 185%;
         background-size: 69%;
+        
       }
     }
     &.img-eduardof {
       @mixin logo-soundhole-img {
         background-image: $img-eduardof;
-        background-position: left 55% bottom 161%;
+        background-position: left 60% bottom 161%;
         background-size: 157%;
+        /* filter: contrast(70%) brightness(1.2) invert(0%) saturate(50%) hue-rotate(0deg) sepia(100%); */
+        /* filter: brightness(1.5) contrast(80%) saturate(80%) sepia(100%); */
+        
       }
     }
   }
   
   & .testimonial-quote {
-    /* display: inline-block; */
+    margin: auto 0 auto 0;
     max-width: 400px;
     & p {
-      /* margin: 0; */
-      margin-bottom: 0;
+      margin: 0;
+      margin-top: 20px;
+      /* margin-bottom: 0; */
     }
     & p:last-of-type {
       margin-top: 0;
@@ -377,6 +388,12 @@ section {
     /* background-image: linear-gradient(-30deg, black, gray, black); */
   }
 
+}
+
+.image-attributions {
+  margin-bottom: 100px;
+  --color-icon-cc-fill: white;
+  --color-icon-cc: black;
 }
 
 
