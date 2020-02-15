@@ -1,7 +1,7 @@
 - const svgPwrSymbol = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' preserveAspectRatio='xMinYMin meet'><path d='M136.68,123.21A34.59,34.59,0,0,0,91.31,71a251.26,251.26,0,1,0,327.85-1.32,34.59,34.59,0,0,0-44.95,52.6,181.94,181.94,0,0,1,63.86,138.49c0,100.39-81.68,182.07-182.07,182.07S73.93,361.13,73.93,260.74A182.09,182.09,0,0,1,136.68,123.21Z'/><path d='M290.59,277V34.59a34.59,34.59,0,0,0-69.19,0V277A34.59,34.59,0,1,0,290.59,277Z'/></svg>`;
 
 
-svg(xmlns='http://www.w3.org/2000/svg' id='svg-card-label' width='0' height='0' style='visibility:hidden;')
+svg(xmlns='http://www.w3.org/2000/svg' id='svg-card-label' width='0' height='0' style='visibility:hidden;position:fixed;top:0;')
   defs
     linearGradient(id='gradient-strings' x1='0' x2='0' y1='0' y2='.01865' gradientUnits='objectBoundingBox' spreadMethod='reflect' gradientTransform='rotate(-33.5)')
       stop(offset='0%' stop-color='white')
@@ -44,7 +44,7 @@ mixin svgLogoFull()
   -
     const logo_full = {
       h: 100,
-      space: 10,
+      space: 1,
       symbol: {
         logo: { h: 341.794, w: 390.12 },
         text: { h: 84.714, w: 321.173 }
@@ -99,11 +99,13 @@ header#header
   
     .nav-bar-right
       ul
-        li: a.nav-link(href="#section1") Section 1 
-        li: a.nav-link(href="#section2") Section 2
-        li: a.nav-link(href="#section3") Section 3
+        li: a.nav-link(href="#section1") ARTISTS 
+        li: a.nav-link(href="#section2") STRINGS
+        li: a.nav-link(href="#section3") CONNECT
 
   .hero-video
+    .hero-title
+      +svgLogoFull
     .video-container
       video#video(autoplay loop muted playsinline) 
         source(src="https://storage.googleapis.com/coverr-main/webm/Strum-Away.webm" type="video/webm")
@@ -114,54 +116,58 @@ header#header
 
   
 section#section1
+  .container
+    h1.section-title CLASSIC Artists
 
-  .testimonial-container
-    -
-      const testimonials = [
-        {
-          author: 'Cristo S.',
-          quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsa explicabo alias veniam, eos impedit quia placeat non dolor mollitia!',
-        },
-        {
-          author: 'Gabriela B.',
-          quote: 'Neque rerum, perspiciatis tempora totam iste laudantium dignissimos reprehenderit aut amet repudiandae quisquam.',
-        },
-        {
-          author: 'Jason M.',
-          quote: 'Inventore dolore fugit temporibus. Amet debitis ipsa voluptas quos quas officia dolor? Minima sapiente pariatur adipisci omnis fugiat.',
-        },
-        {
-          author: 'Juan R.',
-          quote: 'Nesciunt repellat, asperiores minima similique rerum dignissimos officia, delectus nemo hic repudiandae sapiente iste ex impedit obcaecati!',
-        },
-        {
-          author: 'Luis R.',
-          quote: 'Mollitia aspernatur nostrum quas repudiandae tempore cupiditate optio, ad labore ex quisquam eaque ea harum quia alias!',
-        },
-        {
-          author: 'Rebecca P.',
-          quote: 'Eos temporibus dolore animi quas delectus deleniti incidunt totam rem nemo libero quos assumenda, doloribus est repellat iure reiciendis.',
-        },
-        {
-          author: 'Eduardo F.',
-          quote: 'Ducimus accusamus magni aut nobis veniam rem quidem consequatur reiciendis possimus. Quis rem animi nulla cupiditate eligendi officia in deserunt.'
-        }
-      ];
+    .testimonial-container
+      -
+        const testimonials = [
+          {
+            author: 'Cristo S.',
+            quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsa explicabo alias veniam, eos impedit quia placeat non dolor mollitia!',
+          },
+          {
+            author: 'Gabriela B.',
+            quote: 'Neque rerum, perspiciatis tempora totam iste laudantium dignissimos reprehenderit aut amet repudiandae quisquam.',
+          },
+          {
+            author: 'Jason M.',
+            quote: 'Inventore dolore fugit temporibus. Amet debitis ipsa voluptas quos quas officia dolor? Minima sapiente pariatur adipisci omnis fugiat.',
+          },
+          {
+            author: 'Juan R.',
+            quote: 'Nesciunt repellat, asperiores minima similique rerum dignissimos officia, delectus nemo hic repudiandae sapiente iste ex impedit obcaecati!',
+          },
+          {
+            author: 'Luis R.',
+            quote: 'Mollitia aspernatur nostrum quas repudiandae tempore cupiditate optio, ad labore ex quisquam eaque ea harum quia alias!',
+          },
+          {
+            author: 'Rebecca P.',
+            quote: 'Eos temporibus dolore animi quas delectus deleniti incidunt totam rem nemo libero quos assumenda, doloribus est repellat iure reiciendis.',
+          },
+          {
+            author: 'Eduardo F.',
+            quote: 'Ducimus accusamus magni aut nobis veniam rem quidem consequatur reiciendis possimus. Quis rem animi nulla cupiditate eligendi officia in deserunt.'
+          }
+        ];
 
-    each item in testimonials
-      .testimonial.fade
-        .testimonial-img(class=`img-${item.author.match(/\w/g).join('').toLowerCase()}`)
-          svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390.12 341.794' preserveAspectRatio='xMidYMin slice' style='display:block;box-sizing:content-box;height:0.1px;width:100%;padding-bottom:87.61%;overflow:visible;')
-            use(href='#svg-card-logo')
-        .testimonial-quote
-          p #{item.quote}
-          p #{item.author}
+      each item in testimonials
+        .testimonial.fade
+          .testimonial-img(class=`img-${item.author.match(/\w/g).join('').toLowerCase()}`)
+            svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390.12 341.794' preserveAspectRatio='xMidYMin slice' style='display:block;box-sizing:content-box;height:0.1px;width:100%;padding-bottom:87.61%;overflow:visible;')
+              use(href='#svg-card-logo')
+          .testimonial-quote
+            p #{item.quote}
+            p &mdash; #{item.author}
 
 section#section2
-  .product-cards
-    each item in ['normal', 'hard', 'xhard']
-      .card(class=`tension-${item}`)
-        +svgCard(item)
+  .container
+    h1.section-title CLASSIC Strings
+    .product-cards
+      each item in ['normal', 'hard', 'xhard']
+        .card(class=`tension-${item}`)
+          +svgCard(item)
 
 
 
@@ -181,12 +187,14 @@ section#section2
 
 
 section#section3
-  
-
-  form#form(action="https://www.freecodecamp.com/email-submit" method="post")
-    label(for="email") Email: 
-    input#email(type='email' name='email' placeholder='Email' required)
-    input#submit(type='submit')
+  .container
+    h1.section-title CLASSIC Connect
+    p Submit your email to receive our full product catalog, monthly newsletter with artist interviews, and access to our community forums.
+    form#form.form-connect(action="https://www.freecodecamp.com/email-submit" method="post")
+      
+      //- label(for='email') Email: 
+      input#email(type='email' name='email' placeholder='Enter your email address' required)
+      input#submit(type='submit')
 
 
 
@@ -194,44 +202,43 @@ footer(style='min-height:30px; width:100%;margin-top:30px;')
 
 
   //- ===== Image attributions =============
-
-  .image-attributions
-    p(style='font-size:0.7rem;font-style:italic;')
-      a(href='https://www.flickr.com/photos/39400957@N03/12256046533') "Jason Mraz &amp; Raining Jane at NAMM 1/25/2014 #17" 
-      | and 
-      a(href='https://www.flickr.com/photos/39400957@N03/11476390335') "Rebecca Pidgeon 12/20/2013 #2" 
-      span by #[a(href='https://www.flickr.com/photos/39400957@N03') jus10h ]
-      | are licensed under 
-      a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html') CC BY 2.0
-      a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='margin:0 0.35em;height:1.52em !important;'): svg(id='icon-group-cc-by' class='icon-cc-group' viewBox='0 0 133 64' style='height:inherit; vertical-align:top;') 
-        use(href='#icon-cc' x='0' y='0')
-        use(href='#icon-cc-by' x='69' y='0')
-      | &bull; 
-      a(href='https://www.flickr.com/photos/52498302@N08/37694010252') "Gabriela Battistini - Cierre Guitarras Del Mundo 2017" 
-      | and 
-      a(href='https://www.flickr.com/photos/52498302@N08/37677776826') "Eduardo Fernández - Cierre Guitarras Del Mundo 2017" 
-      span by #[a(href='https://www.flickr.com/photos/52498302@N08') Ministerio de Cultura de la Nación ]
-      | are licensed under 
-      a(href='https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&atype=html') CC BY-SA 2.0
-      a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='margin:0 0.35em;height:1.52em !important;'): svg(id='icon-group-cc-by-sa' class='icon-cc-group' viewBox='0 0 202 64' style='height:inherit; vertical-align:top;')
-        use(href='#icon-cc' x='0' y='0')
-        use(href='#icon-cc-by' x='69' y='0')
-        use(href='#icon-cc-sa' x='138' y='0')
-      | &bull; 
-      a(href='https://www.flickr.com/photos/61769013@N06/5676875263') "Homenajes Sonoros - Piazzolla" 
-      span by #[a(href='https://www.flickr.com/photos/61769013@N06') Gescaem], 
-      a(href='https://www.flickr.com/photos/129072575@N05/48994864191') "Jueves Flamencos de la Fundación Cajasol en Sevilla: Juan Carlos Romero (10)" 
-      span by #[a(href='https://www.flickr.com/photos/129072575@N05') fundacioncajasol], 
-      | and 
-      a(href='https://www.flickr.com/photos/65219527@N06/11186848285') "Luis Regidor in the Scoring Studio" 
-      span by #[a(href='https://www.flickr.com/photos/65219527@N06') Berklee Valencia Campus ]
-      | are licensed under 
-      a(href='https://creativecommons.org/licenses/by-nc-nd/2.0/?ref=ccsearch&atype=html') CC BY-NC-ND 2.0
-      a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='margin:0 0.35em;height:1.52em !important;'): svg(id='icon-group-cc-by-nc-nd' viewBox='0 0 271 64' class='icon-cc-group' style='height:inherit; vertical-align:top;')
-        use(href='#icon-cc' x='0' y='0')
-        use(href='#icon-cc-by' x='69' y='0')
-        use(href='#icon-cc-nc' x='138' y='0')
-        use(href='#icon-cc-nd' x='207' y='0')
+  //- p(style='font-size:0.7rem;font-style:italic;')
+  p.image-attributions
+    a(href='https://www.flickr.com/photos/39400957@N03/12256046533') "Jason Mraz &amp; Raining Jane at NAMM 1/25/2014 #17" 
+    | and 
+    a(href='https://www.flickr.com/photos/39400957@N03/11476390335') "Rebecca Pidgeon 12/20/2013 #2" 
+    span by #[a(href='https://www.flickr.com/photos/39400957@N03') jus10h ]
+    | are licensed under 
+    a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html') CC BY 2.0
+    a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='margin:0 0.35em;height:1.52em !important;'): svg(id='icon-group-cc-by' class='icon-cc-group' viewBox='0 0 133 64' style='height:inherit; vertical-align:top;') 
+      use(href='#icon-cc' x='0' y='0')
+      use(href='#icon-cc-by' x='69' y='0')
+    | &bull; 
+    a(href='https://www.flickr.com/photos/52498302@N08/37694010252') "Gabriela Battistini - Cierre Guitarras Del Mundo 2017" 
+    | and 
+    a(href='https://www.flickr.com/photos/52498302@N08/37677776826') "Eduardo Fernández - Cierre Guitarras Del Mundo 2017" 
+    span by #[a(href='https://www.flickr.com/photos/52498302@N08') Ministerio de Cultura de la Nación ]
+    | are licensed under 
+    a(href='https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&atype=html') CC BY-SA 2.0
+    a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='margin:0 0.35em;height:1.52em !important;'): svg(id='icon-group-cc-by-sa' class='icon-cc-group' viewBox='0 0 202 64' style='height:inherit; vertical-align:top;')
+      use(href='#icon-cc' x='0' y='0')
+      use(href='#icon-cc-by' x='69' y='0')
+      use(href='#icon-cc-sa' x='138' y='0')
+    | &bull; 
+    a(href='https://www.flickr.com/photos/61769013@N06/5676875263') "Homenajes Sonoros - Piazzolla" 
+    span by #[a(href='https://www.flickr.com/photos/61769013@N06') Gescaem], 
+    a(href='https://www.flickr.com/photos/129072575@N05/48994864191') "Jueves Flamencos de la Fundación Cajasol en Sevilla: Juan Carlos Romero (10)" 
+    span by #[a(href='https://www.flickr.com/photos/129072575@N05') fundacioncajasol], 
+    | and 
+    a(href='https://www.flickr.com/photos/65219527@N06/11186848285') "Luis Regidor in the Scoring Studio" 
+    span by #[a(href='https://www.flickr.com/photos/65219527@N06') Berklee Valencia Campus ]
+    | are licensed under 
+    a(href='https://creativecommons.org/licenses/by-nc-nd/2.0/?ref=ccsearch&atype=html') CC BY-NC-ND 2.0
+    a(href='https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html' target='_blank' rel='noopener noreferrer' style='margin:0 0.35em;height:1.52em !important;'): svg(id='icon-group-cc-by-nc-nd' viewBox='0 0 271 64' class='icon-cc-group' style='height:inherit; vertical-align:top;')
+      use(href='#icon-cc' x='0' y='0')
+      use(href='#icon-cc-by' x='69' y='0')
+      use(href='#icon-cc-nc' x='138' y='0')
+      use(href='#icon-cc-nd' x='207' y='0')
 
       
 

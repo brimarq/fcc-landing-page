@@ -5,12 +5,51 @@
 $rlh: 1.618;
 $breakpoint: screen and (min-width: 1025px);
 $primary-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-$color-body-text: hsl(227, 12%, 85%);
+
+
+$color-body-text: hsl(0, 0%, 23%);
+
+
 $color-new-fcc-toggler-btn-bg: hsl(227, 12%, 30%);
+
+$font-family-body: 'Open Sans', sans-serif;
+$font-family-title: 'Federo', sans-serif;
 
 $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px 20px blue) grayscale(50%) hue-rotate(90deg) invert(75%) opacity(25%) saturate(30%) sepia(60%);
 
+$color-base: hsl(43, 32%, 76%); /* #D6CBB0 */
+$color-analagous1: hsl(55, 48%, 79%); /* #E3DFAF */
+$color-analagous2: hsl(49, 60%, 82%); /* #EDE3B7 */
+$color-analagous3: 	hsl(37, 60%, 82%); /* #EDD8B7 */
+$color-analagous4: hsl(29, 48%, 79%); /* #E3C8AF */
 
+$color-monochromatic1: hsl(41, 10%, 31%); /* #575247 */
+$color-monochromatic2: hsl(43, 61%, 66%); /* #DDBF73 */
+$color-monochromatic3: hsl(43, 32%, 26%); /* #574B2D */
+$color-monochromatic4: hsl(43, 14%, 58%); /* #A39B86 */
+
+$color-triad1: hsl(43, 16%, 46%); /* #8A7F63 */
+$color-triad2: hsl(160, 48%, 75%); /* #9FDDC8 */
+$color-triad3: hsl(289, 20%, 55%); /* #9B76A3 */
+$color-triad4: hsl(289, 13%, 48%); /* #846A8A */
+
+$color-complimentary1: hsl(43, 16%, 46%); /* #8A7F63 */
+$color-complimentary2: hsl(42, 100%, 96%); /* #FFF9EB */
+$color-complimentary3: hsl(224, 24%, 44%); /* #55638A */
+$color-complimentary4: 	hsl(224, 32%, 76%); /* #B0BAD6 */
+
+$color-compound1: hsl(55, 20%, 55%); /* #A39F76 */
+$color-compound2: hsl(55, 41%, 31%); /* #706B2F */
+$color-compound3: hsl(208, 57%, 67%); /* #7DAFDB */
+$color-compound4: hsl(192, 20%, 55%); /* #769AA3 */
+
+$color-shades1: hsl(44, 11%, 54%); /* #968F7B */
+$color-shades2: hsl(41, 10%, 31%); /* #575247 */
+$color-shades3: hsl(42, 42%, 81%); /* #E3D7BA */
+$color-shades4: hsl(42, 20%, 67%); /* #BDB39B */
+
+$color-savarez-red: hsl(351, 63%, 46%);
+$color-savarez-black: hsl(0, 0%, 23%);
 
 
 @define-mixin button {
@@ -43,38 +82,83 @@ $filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px
     width: 100%;
     clip-path: circle(31.5% at 50%);
     background-repeat: no-repeat;
-    filter: sepia(.5);
+    filter: saturate(.7);
     
     @mixin-content;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    clip-path: circle(31.5% at 50%);
+    background: radial-gradient(circle at 52% 55%, transparent 35%, 50%, white);
+    filter: blur(10px);
+  }
+
 }
 
-*, ::before, ::after {
-  box-sizing: border-box;
-}
+
+/* Set default box-sizing */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
 
 html {
-  line-height: $rlh;
-}
-
-html, body { 
-  min-height: 100%;
+  background-color: white;
+  font-size: 16px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 body {
-  font-family: $primary-font-family;
-  /* font-size: 100%;
-  margin: 0; */
+  color: $color-body-text;
+  font-family: $font-family-body;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: $rlh;
 }
 
+a {
+  color: #3273dc;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    color: #363636;
+  }
+}
+
+
+html, body { 
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+section, footer {
+  padding: 0 10px;
+}
+
+footer {
+  /* Cover the inexplicable gap between content and viewport bottom  */
+  /* padding-bottom: 1px; */
+  background-color: #545454;
+}
+
+
+
 /* vertical rhythm for block-level elements */
-h1, h2, ul, ol, p,
+header, section, form, h1, h2, ul, ol, p,
 pre {
   margin-bottom: calc(1rem * $rlh);
 }
 
-a {
-  text-decoration: none;
+.container {
+  position: relative;
+  max-width: 700px;
+  margin: auto;
 }
 
 header {
@@ -82,6 +166,7 @@ header {
   /* height: 100vh; */
 }
 
+$nav-bar-height: 60px;
 nav#nav-bar {
   display: flex;
   justify-content: space-between;
@@ -90,13 +175,16 @@ nav#nav-bar {
   padding: 5px 10px;
   top: 0;
   left: 0;
-  /* min-height: 50px; */
+  height: $nav-bar-height;
   width: 100%;
-  background: hsla(0, 0%, 0%, .7);
+  background-color: white;
   z-index: 100;
   transition: top 0.3s;
-  /* line-height: 2; */
-  color: white;
+  color: 	hsl(0, 0%, 23%);
+  background: linear-gradient(
+    white 95%,
+    hsl(351, 63%, 46%) 95.5%
+  );
 
   & .nav-bar-left {
     /* display: flex; */
@@ -104,12 +192,12 @@ nav#nav-bar {
     width: 100%;
     max-width: 200px;
     height: auto;
+    color: inherit;
     & a {
-      color: white;
+      color: inherit;
+      --color-logo-soundhole: #BF2C43;
+      --color-logo-strings: #BF2C43;
     }
-    /* & > img {
-      display: none;
-    } */
   }
 
   & ul {
@@ -117,27 +205,48 @@ nav#nav-bar {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    & li:not(:last-of-type) {
+      margin-right: 1em;
+    }
   }
 
   & .nav-link {
     color: inherit;
+    
   }
 
 }
 
 .hero-video {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   width: 100%;
   overflow: hidden;
-  /* use margin if top menu above */
-  /* margin-top: 65px;
-  height: calc(45vh - 65px); */
-  height: 45vh;
+  /* height: 45vh; */
+  /* adjust for top nav-bar subtracting margin-top from height */
+  margin-top: $nav-bar-height;
+  height: calc(45vh - $nav-bar-height);
   min-height: 240px;
-  /* background: #000; */
+  background: linear-gradient(
+    /* hsl(351, 63%, 46%), 8%, */
+    hsl(351, 63%, 100%) 60%, 92%,
+    hsl(351, 63%, 46%)
+  );
+
+  & .hero-title {
+    position: absolute;
+    width: 70%;
+    color: 	hsl(0, 0%, 23%);
+    --color-logo-soundhole: #BF2C43;
+    --color-logo-strings: #BF2C43;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
 
   & .video-container {
     height: 100%;
@@ -146,6 +255,7 @@ nav#nav-bar {
     width: 100%;
     top: 0;
     left: 0;
+ 
 
     & video {
       display: block;
@@ -154,26 +264,28 @@ nav#nav-bar {
       background-position: center;
       object-fit: cover;
       object-position: 50% 50%;
-      filter: sepia(100%) brightness(200%) blur(0px) opacity(20%);
+      filter: saturate(0) brightness(1) contrast(1) blur(0) opacity(.3);
       /* transition: filter .35s ease-in-out; */
     }
   }
 
   @media (min-width: 768px) {
-    /* use margin if top menu above */
-    /* height: calc(100vh - 65px);
-    max-height: calc(100vh - 65px); */
-    height: 100vh;
-    max-height: 100vh;
+    /* height: 100vh; */
+    /* max-height: 100vh; */
+    /* adjust for top nav-bar subtracting margin-top from height */
+    height: calc(100vh - $nav-bar-height);
+    max-height: calc(100vh - $nav-bar-height);
     min-height: 300px;
-    
-    /* background: linear-gradient(to top,#525252,#333); */
   }
 
 }
 
-section, footer {
-  padding: 0 10px;
+
+
+.section-title {
+  font-family: $font-family-title;
+  color: #1A397D;
+  text-align: center;
 }
 
 .testimonial-container {
@@ -183,7 +295,7 @@ section, footer {
 .testimonial {
   display: none;
   flex-direction: column;
-  width: 90%;
+  /* width: 90%; */
   margin: 0 auto 0 auto;
   justify-content: center;
   align-items: center;
@@ -217,8 +329,12 @@ section, footer {
     
     /* shape-outside: url(#svg-card-logo); */
     margin-right: 20px;
-    --color-logo-soundhole: hsl(51, 100%, 23%);
-    --color-logo-strings: hsl(51, 100%, 43%);
+    --color-logo-soundhole: #BF2C43;
+    --color-logo-strings: #BF2C43;
+
+    @media (min-width: 768px) {
+      max-width: 350px;
+    }
 
     &.img-cristos {
       @mixin logo-soundhole-img {
@@ -332,25 +448,20 @@ section, footer {
 .product-cards {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  $red-card: 	hsl(358, 84%, 58%);
-  $blue-card: hsl(197, 93%, 44%);
-  $purple-card: 	hsl(248, 31%, 59%);
-  /* $red-card: 	hsl(358, 84%, 78%);
-  $blue-card: hsl(197, 93%, 64%);
-  $purple-card: 	hsl(248, 31%, 79%); */
-
+  /* flex-wrap: wrap; */
+  $red-card: hsl(346, 100%, 43%);
+  $blue-card: hsl(203, 100%, 40%);
+  $purple-card: 	hsl(248, 31%, 52%);
 
   & .card {
     position: relative;
     /* display: inline-block; */
     width: 100%;
-    max-width: 350px;
+    /* max-width: 350px; */
     height: auto;
     margin: 1em;
     /* outline: 1px solid red; */
     
-
     &.tension-normal{
       @mixin product-card $red-card;
     }
@@ -360,7 +471,7 @@ section, footer {
     }
 
     &.tension-xhard{
-      @mixin product-card hsla(248, 31%, 59%);
+      @mixin product-card $purple-card;
     }
 
   }
@@ -390,10 +501,26 @@ section, footer {
 
 }
 
-.image-attributions {
-  margin-bottom: 100px;
-  --color-icon-cc-fill: white;
-  --color-icon-cc: black;
+
+
+footer {
+  
+  color: white;
+
+  & .image-attributions {
+    /* padding-bottom: 100px; */
+    margin: 0;
+    font-size: 0.7rem;
+    font-style: italic;
+    /* --color-icon-cc-fill: white; */
+    /* --color-icon-cc: black; */
+    & a {
+      color: hsl(0, 0%, 80%);
+      &:hover {
+        color: hsl(0, 0%, 90%);
+      }
+    }
+  }
 }
 
 
@@ -428,4 +555,52 @@ section, footer {
     display: inline-flex;
   }
 }
+
+
+.form-connect {
+  width: 100%;
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+
+  & input#email {
+    appearance: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    box-shadow: inset 0 0.0625em 0.125em hsla(0, 0%, 4%, 0.05);
+
+    background-color: white;
+    border-color: hsl(0, 0%, 86%);
+    color: hsl(0, 0%, 21%);
+
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: calc(0.75em - 1px);
+    padding-right: calc(0.75em - 1px);
+    padding-top: calc(0.5em - 1px);
+
+    margin-bottom: 1em;
+
+    &:hover {
+      border-color: hsl(0, 0%, 71%);
+    }
+  
+    &:focus {
+      border-color: hsl(217, 71%, 53%);
+      box-shadow: 0 0 0 0.125em hsla(217, 71%, 53%, 0.25);
+    }
+    
+  }
+
+  & input#submit {
+    @mixin button;
+    margin: auto;
+    cursor: pointer;
+    color: white;
+    background: #BF2C43;
+  }
+}
+
 
