@@ -119,9 +119,9 @@ section#section1
   .container
     h1.section-title CLASSIC Artists
 
-    .testimonial-container
+    .artist-container
       -
-        const testimonials = [
+        const artistQuotes = [
           {
             author: 'Cristo S.',
             quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsa explicabo alias veniam, eos impedit quia placeat non dolor mollitia!',
@@ -152,12 +152,12 @@ section#section1
           }
         ];
 
-      each item in testimonials
-        .testimonial.fade
-          .testimonial-img(class=`img-${item.author.match(/\w/g).join('').toLowerCase()}`)
+      each item in artistQuotes
+        .artist.fade
+          .artist-img(class=`img-${item.author.match(/\w/g).join('').toLowerCase()}`)
             svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390.12 341.794' preserveAspectRatio='xMidYMin slice' style='display:block;box-sizing:content-box;height:0.1px;width:100%;padding-bottom:87.61%;overflow:visible;')
               use(href='#svg-card-logo')
-          .testimonial-quote
+          .artist-quote
             p #{item.quote}
             p &mdash; #{item.author}
 

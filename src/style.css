@@ -288,11 +288,11 @@ nav#nav-bar {
   text-align: center;
 }
 
-.testimonial-container {
+.artist-container {
   margin: 20px 0 20px 0;
 }
 
-.testimonial {
+.artist {
   display: none;
   flex-direction: column;
   /* width: 90%; */
@@ -302,7 +302,7 @@ nav#nav-bar {
 
   
 
-  & .testimonial-img {
+  & .artist-img {
     $img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
     $img-gabrielab: url("https://live.staticflickr.com/4473/37694010252_4358929aeb_c.jpg");
     $img-jasonm: url("https://live.staticflickr.com/3691/12256046533_1ce12441be_c.jpg");
@@ -384,7 +384,7 @@ nav#nav-bar {
     }
   }
   
-  & .testimonial-quote {
+  & .artist-quote {
     /* margin: auto 0 auto 0; */
     /* max-width: 400px; */
     font-style: italic;
@@ -407,13 +407,13 @@ nav#nav-bar {
     justify-content: center;
     align-items: center;
 
-    & .testimonial-img {
+    & .artist-img {
       width: 35%;
       margin: 0;
       /* flex: 0 1 90%; */
     }
 
-    & .testimonial-quote {
+    & .artist-quote {
       margin: auto;
       width: 60%;
     }
