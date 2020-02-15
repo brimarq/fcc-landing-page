@@ -157,7 +157,7 @@ pre {
 
 .container {
   position: relative;
-  max-width: 700px;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -296,16 +296,11 @@ nav#nav-bar {
   display: none;
   flex-direction: column;
   /* width: 90%; */
-  margin: 0 auto 0 auto;
+  /* margin: 0 auto 0 auto; */
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 376px) {
-    margin: 0 auto 0 auto;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-  }
+  
 
   & .testimonial-img {
     $img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
@@ -315,20 +310,14 @@ nav#nav-bar {
     $img-luisr: url("https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg");
     $img-rebeccap: url("https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg");
     $img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg");
-    /* display: inline-block; */
-    /* float: left; */
+    
     position: relative;
     height: auto;
-    width: 100%;
-    max-width: 200px;
+    width: 80%;
+    margin-bottom: 5%;
+    /* max-width: 200px; */
 
-    /* box-sizing: content-box;
-    height: 0.1px;
-    padding-bottom:87.61%;
-    overflow:visible;  */
-    
-    /* shape-outside: url(#svg-card-logo); */
-    margin-right: 20px;
+    /* margin-right: 20px; */
     --color-logo-soundhole: #BF2C43;
     --color-logo-strings: #BF2C43;
 
@@ -396,18 +385,40 @@ nav#nav-bar {
   }
   
   & .testimonial-quote {
-    margin: auto 0 auto 0;
-    max-width: 400px;
+    /* margin: auto 0 auto 0; */
+    /* max-width: 400px; */
+    font-style: italic;
     & p {
       margin: 0;
-      margin-top: 20px;
+      text-align: center;
+      /* margin-top: 20px; */
       /* margin-bottom: 0; */
     }
     & p:last-of-type {
-      margin-top: 0;
-      text-align: right;
+      /* margin-top: 0; */
+      text-align: center;
+      /* padding-right: 10%; */
     }
   }
+
+  @media (min-width: 376px) {
+    /* margin: 0 auto 0 auto; */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    & .testimonial-img {
+      width: 35%;
+      margin: 0;
+      /* flex: 0 1 90%; */
+    }
+
+    & .testimonial-quote {
+      margin: auto;
+      width: 60%;
+    }
+  }
+
 }
 
 .fade {
