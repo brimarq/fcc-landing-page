@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
   useCustomFccToggler();
-  testimonialCarousel();
+  artistCarousel();
 
   // Replace original fCC test suite toggler with one that doesn't clash with page elements
   async function useCustomFccToggler() {
@@ -76,19 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
-  function testimonialCarousel() {
-    let testimonialIndex = 0;
-    showTestimonials();
+  function artistCarousel() {
+    let artistIndex = 0;
+    showArtists();
 
-    function showTestimonials() {
-      const testimonials = document.querySelectorAll('.testimonial');
-      for (let i = 0; i < testimonials.length; i++) {
-        testimonials[i].style.display = 'none';
+    function showArtists() {
+      const artists = document.querySelectorAll('.artist');
+      for (let i = 0; i < artists.length; i++) {
+        artists[i].style.display = 'none';
       }
-      testimonialIndex++;
-      if (testimonialIndex > testimonials.length) { testimonialIndex = 1 };
-      testimonials[testimonialIndex - 1].style.display = 'flex';
-      setTimeout(showTestimonials, 7000);
+      artistIndex++;
+      if (artistIndex > artists.length) { artistIndex = 1 };
+      artists[artistIndex - 1].style.display = 'flex';
+      setTimeout(showArtists, 7000);
     }
   }
 
