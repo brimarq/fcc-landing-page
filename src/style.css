@@ -141,6 +141,13 @@ section, footer {
   padding: 0 10px;
 }
 
+section {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* min-height: 60vh; */
+}
+
 footer {
   /* Cover the inexplicable gap between content and viewport bottom  */
   /* padding-bottom: 1px; */
@@ -289,7 +296,7 @@ nav#nav-bar {
 }
 
 .artist-container {
-  margin: 20px 0 20px 0;
+  /* margin: 20px 0 20px 0; */
 }
 
 .artist {
@@ -422,12 +429,12 @@ nav#nav-bar {
 }
 
 .fade {
-  animation-name: fade;
-  animation-duration: 2s;
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 
-@keyframes fade {
-  from {opacity: .4}
+@keyframes fade-in {
+  from {opacity: .8}
   to {opacity: 1}
 }
 
@@ -458,7 +465,9 @@ nav#nav-bar {
 
 .product-cards {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   /* flex-wrap: wrap; */
   $red-card: hsl(346, 100%, 43%);
   $blue-card: hsl(203, 100%, 40%);
@@ -467,10 +476,12 @@ nav#nav-bar {
   & .card {
     position: relative;
     /* display: inline-block; */
-    width: 100%;
+    width: 80%;
     /* max-width: 350px; */
     height: auto;
-    margin: 1em;
+    &:not(:last-of-type) {
+      margin-bottom: 6%;
+    }
     /* outline: 1px solid red; */
     
     &.tension-normal{
@@ -485,6 +496,15 @@ nav#nav-bar {
       @mixin product-card $purple-card;
     }
 
+  }
+
+  @media (min-width: 376px) {
+    flex-direction: row;
+
+    & .card:not(:last-of-type) {
+      margin-bottom: 0;
+      margin-right: 3%;
+    }
   }
 }
 
@@ -534,40 +554,6 @@ footer {
   }
 }
 
-
-
-#custom_fcc_foldout_toggler {
-  @mixin button;
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 500;
-  display: none;
-  cursor: pointer;
-  color: $color-body-text;
-  background: $color-new-fcc-toggler-btn-bg;
-  transition: all .2s;
-
-  & svg {
-    height: 1.1em;
-    fill: currentColor;
-    margin-right: 0.5ch;
-  }
-
-  &:hover, &:active {
-    color: white;
-  }
-
-  &.is-open {
-    color: hsl(120, 100%, 50%);
-  }
-
-  @media $breakpoint {
-    display: inline-flex;
-  }
-}
-
-
 .form-connect {
   width: 100%;
   max-width: 250px;
@@ -614,4 +600,34 @@ footer {
   }
 }
 
+#custom_fcc_foldout_toggler {
+  @mixin button;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 500;
+  display: none;
+  cursor: pointer;
+  color: hsl(0, 0%, 70%);
+  /* background: $color-new-fcc-toggler-btn-bg; */
+  background: hsla(0, 0%, 0%, .7);
+  transition: all .2s;
 
+  & svg {
+    height: 1.1em;
+    fill: currentColor;
+    margin-right: 0.5ch;
+  }
+
+  &:hover, &:active {
+    color: white;
+  }
+
+  &.is-open {
+    color: hsl(120, 100%, 50%);
+  }
+
+  @media $breakpoint {
+    display: inline-flex;
+  }
+}
