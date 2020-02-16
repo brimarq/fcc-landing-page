@@ -194,10 +194,13 @@ nav#nav-bar {
   );
 
   & .nav-bar-left {
+    /* position: relative; */
     /* display: flex; */
     /* align-items: center; */
+    /* margin-right: 1em; */
     width: 100%;
-    max-width: 200px;
+    max-width: 150px;
+    min-width: 110px;
     height: auto;
     color: inherit;
     & a {
@@ -207,21 +210,26 @@ nav#nav-bar {
     }
   }
 
-  & ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    & li:not(:last-of-type) {
-      margin-right: 1em;
+  & .nav-bar-right {
+    font-size: 0.8em;
+    & ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  
+      & li {
+        margin-left: 0.8em;
+      }
+    }
+  
+    & .nav-link {
+      color: inherit;
+      
     }
   }
 
-  & .nav-link {
-    color: inherit;
-    
-  }
+  
 
 }
 
@@ -246,7 +254,7 @@ nav#nav-bar {
   & .hero-title {
     position: absolute;
     width: 70%;
-    color: 	hsl(0, 0%, 23%);
+    color: hsl(0, 0%, 23%);
     --color-logo-soundhole: #BF2C43;
     --color-logo-strings: #BF2C43;
     top: 50%;
@@ -530,29 +538,18 @@ nav#nav-bar {
     /* background-image: linear-gradient(-30deg, black, gray, black); */
   }
 
-}
+  &.new-logo {
+    color: hsl(0, 0%, 23%);
+    --color-logo-soundhole: #BF2C43;
+    --color-logo-strings: #BF2C43;
+    /* color: #BF2C43;
+    --color-logo-soundhole: hsl(0, 0%, 23%);
+    --color-logo-strings: hsl(0, 0%, 23%); */
 
-
-
-footer {
-  
-  color: white;
-
-  & .image-attributions {
-    /* padding-bottom: 100px; */
-    margin: 0;
-    font-size: 0.7rem;
-    font-style: italic;
-    /* --color-icon-cc-fill: white; */
-    /* --color-icon-cc: black; */
-    & a {
-      color: hsl(0, 0%, 80%);
-      &:hover {
-        color: hsl(0, 0%, 90%);
-      }
-    }
   }
+
 }
+
 
 .form-connect {
   width: 100%;
@@ -597,6 +594,26 @@ footer {
     cursor: pointer;
     color: white;
     background: #BF2C43;
+  }
+}
+
+footer {
+  
+  color: white;
+
+  & .image-attributions {
+    /* padding-bottom: 100px; */
+    margin: 0;
+    font-size: 0.7rem;
+    font-style: italic;
+    /* --color-icon-cc-fill: white; */
+    /* --color-icon-cc: black; */
+    & a {
+      color: hsl(0, 0%, 80%);
+      &:hover {
+        color: hsl(0, 0%, 90%);
+      }
+    }
   }
 }
 
