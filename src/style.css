@@ -4,53 +4,12 @@
 
 $rlh: 1.618;
 $breakpoint: screen and (min-width: 1025px);
-$primary-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-
-
-$color-body-text: hsl(0, 0%, 23%);
-
-
-$color-new-fcc-toggler-btn-bg: hsl(227, 12%, 30%);
-
 $font-family-body: 'Open Sans', sans-serif;
 $font-family-title: 'Federo', sans-serif;
-
-$filter-examples: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px 20px blue) grayscale(50%) hue-rotate(90deg) invert(75%) opacity(25%) saturate(30%) sepia(60%);
-
-$color-base: hsl(43, 32%, 76%); /* #D6CBB0 */
-$color-analagous1: hsl(55, 48%, 79%); /* #E3DFAF */
-$color-analagous2: hsl(49, 60%, 82%); /* #EDE3B7 */
-$color-analagous3: 	hsl(37, 60%, 82%); /* #EDD8B7 */
-$color-analagous4: hsl(29, 48%, 79%); /* #E3C8AF */
-
-$color-monochromatic1: hsl(41, 10%, 31%); /* #575247 */
-$color-monochromatic2: hsl(43, 61%, 66%); /* #DDBF73 */
-$color-monochromatic3: hsl(43, 32%, 26%); /* #574B2D */
-$color-monochromatic4: hsl(43, 14%, 58%); /* #A39B86 */
-
-$color-triad1: hsl(43, 16%, 46%); /* #8A7F63 */
-$color-triad2: hsl(160, 48%, 75%); /* #9FDDC8 */
-$color-triad3: hsl(289, 20%, 55%); /* #9B76A3 */
-$color-triad4: hsl(289, 13%, 48%); /* #846A8A */
-
-$color-complimentary1: hsl(43, 16%, 46%); /* #8A7F63 */
-$color-complimentary2: hsl(42, 100%, 96%); /* #FFF9EB */
-$color-complimentary3: hsl(224, 24%, 44%); /* #55638A */
-$color-complimentary4: 	hsl(224, 32%, 76%); /* #B0BAD6 */
-
-$color-compound1: hsl(55, 20%, 55%); /* #A39F76 */
-$color-compound2: hsl(55, 41%, 31%); /* #706B2F */
-$color-compound3: hsl(208, 57%, 67%); /* #7DAFDB */
-$color-compound4: hsl(192, 20%, 55%); /* #769AA3 */
-
-$color-shades1: hsl(44, 11%, 54%); /* #968F7B */
-$color-shades2: hsl(41, 10%, 31%); /* #575247 */
-$color-shades3: hsl(42, 42%, 81%); /* #E3D7BA */
-$color-shades4: hsl(42, 20%, 67%); /* #BDB39B */
-
-$color-savarez-red: hsl(351, 63%, 46%);
-$color-savarez-black: hsl(0, 0%, 23%);
-
+$color-red: hsl(351, 63%, 46%);
+$color-blue: hsl(221, 66%, 30%);
+$color-body-text: hsl(0, 0%, 23%);
+$nav-bar-height: 60px;
 
 @define-mixin button {
   appearance: none;
@@ -101,6 +60,27 @@ $color-savarez-black: hsl(0, 0%, 23%);
 
 }
 
+@define-mixin product-card $color-card {
+  color: $color-body-text;
+  --color-logo-soundhole: $color-card;
+  --color-logo-strings: $color-card;
+  --color-card-title: $color-card;
+  $color-card-shadow: hsla(0, 0%, 60%, .3);
+  background: 
+    linear-gradient(
+      45deg, 
+      $color-card-shadow, transparent 37% 57%, $color-card-shadow
+    )
+    , 
+    linear-gradient(
+      -45deg, 
+      $color-card-shadow, transparent 37% 57%, $color-card-shadow
+    )
+    ;
+  box-shadow: inset -1px -1px 3px hsla(0, 0%, 0%, 0.2);
+  border-radius: 8px;
+}
+
 
 /* Set default box-sizing */
 html { box-sizing: border-box; }
@@ -142,23 +122,21 @@ section, footer {
 }
 
 section {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* min-height: 60vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
 }
 
 footer {
   /* Cover the inexplicable gap between content and viewport bottom  */
-  /* padding-bottom: 1px; */
+  padding-bottom: 1px;
   background-color: #545454;
+  width: 100%;
 }
 
-
-
 /* vertical rhythm for block-level elements */
-header, section, form, h1, h2, ul, ol, p,
-pre {
+header, section, form, h1, ul, p {
   margin-bottom: calc(1rem * $rlh);
 }
 
@@ -170,34 +148,26 @@ pre {
 
 header {
   position: relative;
-  /* height: 100vh; */
 }
 
-$nav-bar-height: 60px;
+
 nav#nav-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   padding: 5px 10px;
-  top: 0;
-  left: 0;
   height: $nav-bar-height;
   width: 100%;
   background-color: white;
   z-index: 100;
   transition: top 0.3s;
-  color: 	hsl(0, 0%, 23%);
+  color: 	$color-body-text;
   background: linear-gradient(
     white 95%,
-    hsl(351, 63%, 46%) 95.5%
+    $color-red 95.5%
   );
 
   & .nav-bar-left {
-    /* position: relative; */
-    /* display: flex; */
-    /* align-items: center; */
-    /* margin-right: 1em; */
     width: 100%;
     max-width: 150px;
     min-width: 110px;
@@ -205,8 +175,8 @@ nav#nav-bar {
     color: inherit;
     & a {
       color: inherit;
-      --color-logo-soundhole: #BF2C43;
-      --color-logo-strings: #BF2C43;
+      --color-logo-soundhole: $color-red;
+      --color-logo-strings: $color-red;
     }
   }
 
@@ -225,38 +195,32 @@ nav#nav-bar {
   
     & .nav-link {
       color: inherit;
+
+      &:hover, &:focus {
+        color: $color-red;
+      }
       
     }
   }
-
-  
-
 }
 
 .hero-video {
   position: relative;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
   width: 100%;
   overflow: hidden;
-  /* height: 45vh; */
-  /* adjust for top nav-bar subtracting margin-top from height */
-  margin-top: $nav-bar-height;
   height: calc(45vh - $nav-bar-height);
   min-height: 240px;
   background: linear-gradient(
-    /* hsl(351, 63%, 46%), 8%, */
-    hsl(351, 63%, 100%) 60%, 92%,
-    hsl(351, 63%, 46%)
-  );
+    transparent 50%,
+    hsla(351, 63%, 46%, .6)
+  ), white;
 
   & .hero-title {
     position: absolute;
     width: 70%;
-    color: hsl(0, 0%, 23%);
-    --color-logo-soundhole: #BF2C43;
-    --color-logo-strings: #BF2C43;
+    color: $color-body-text;
+    --color-logo-soundhole: $color-red;
+    --color-logo-strings: $color-red;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -271,7 +235,6 @@ nav#nav-bar {
     top: 0;
     left: 0;
  
-
     & video {
       display: block;
       height: 100%;
@@ -279,15 +242,11 @@ nav#nav-bar {
       background-position: center;
       object-fit: cover;
       object-position: 50% 50%;
-      filter: saturate(0) brightness(1) contrast(1) blur(0) opacity(.3);
-      /* transition: filter .35s ease-in-out; */
+      filter: saturate(0) brightness(1.2) opacity(.25);
     }
   }
 
   @media (min-width: 768px) {
-    /* height: 100vh; */
-    /* max-height: 100vh; */
-    /* adjust for top nav-bar subtracting margin-top from height */
     height: calc(100vh - $nav-bar-height);
     max-height: calc(100vh - $nav-bar-height);
     min-height: 300px;
@@ -295,27 +254,17 @@ nav#nav-bar {
 
 }
 
-
-
 .section-title {
   font-family: $font-family-title;
-  color: #1A397D;
+  color: $color-blue;
   text-align: center;
-}
-
-.artist-container {
-  /* margin: 20px 0 20px 0; */
 }
 
 .artist {
   display: none;
   flex-direction: column;
-  /* width: 90%; */
-  /* margin: 0 auto 0 auto; */
   justify-content: center;
   align-items: center;
-
-  
 
   & .artist-img {
     $img-cristos: url("https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg");
@@ -325,16 +274,12 @@ nav#nav-bar {
     $img-luisr: url("https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg");
     $img-rebeccap: url("https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg");
     $img-eduardof: url("https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg");
-    
     position: relative;
     height: auto;
     width: 80%;
     margin-bottom: 5%;
-    /* max-width: 200px; */
-
-    /* margin-right: 20px; */
-    --color-logo-soundhole: #BF2C43;
-    --color-logo-strings: #BF2C43;
+    --color-logo-soundhole: $color-red;
+    --color-logo-strings: $color-red;
 
     @media (min-width: 768px) {
       max-width: 350px;
@@ -392,32 +337,22 @@ nav#nav-bar {
         background-image: $img-eduardof;
         background-position: left 60% bottom 161%;
         background-size: 157%;
-        /* filter: contrast(70%) brightness(1.2) invert(0%) saturate(50%) hue-rotate(0deg) sepia(100%); */
-        /* filter: brightness(1.5) contrast(80%) saturate(80%) sepia(100%); */
-        
       }
     }
   }
   
   & .artist-quote {
-    /* margin: auto 0 auto 0; */
-    /* max-width: 400px; */
     font-style: italic;
     & p {
       margin: 0;
       text-align: center;
-      /* margin-top: 20px; */
-      /* margin-bottom: 0; */
     }
     & p:last-of-type {
-      /* margin-top: 0; */
       text-align: center;
-      /* padding-right: 10%; */
     }
   }
 
   @media (min-width: 376px) {
-    /* margin: 0 auto 0 auto; */
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -425,7 +360,6 @@ nav#nav-bar {
     & .artist-img {
       width: 35%;
       margin: 0;
-      /* flex: 0 1 90%; */
     }
 
     & .artist-quote {
@@ -446,51 +380,22 @@ nav#nav-bar {
   to {opacity: 1}
 }
 
-@define-mixin product-card $color-card {
-  /* --color-logo-soundhole: hsla(51, 100%, 95%, 1); */
-  --color-logo-soundhole: $color-card;
-  /* --color-logo-strings: url(#gradient-strings); */
-  --color-logo-strings: $color-card;
-  --color-card-subtitle: hsla(51, 100%, 13%, 0.8);
-  --color-card-footer: hsla(51, 100%, 13%, 0.8);
-  --color-card-title: $color-card;
-  $color-card-shadow: hsla(51, 100%, 13%, .2);
-  /* $color-card-shadow: hsla(0, 0%, 0%, .9); */
-  background: 
-    linear-gradient(
-      57deg, 
-      $color-card-shadow, transparent 37% 57%, $color-card-shadow
-    ), 
-    linear-gradient(
-      -45deg, 
-      $color-card-shadow, transparent 37% 57%, $color-card-shadow
-    );
-    /* radial-gradient(circle at 50.1% 56.5%, transparent 0%, $color-card 34%, $color-card-shadow 34.5%, transparent 37%); */
-  background-color: hsla(51, 100%, 95%, 1);
-  box-shadow: inset -1px -1px 3px hsla(0, 0%, 0%, 0.2);
-  border-radius: 8px;
-}
-
 .product-cards {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* flex-wrap: wrap; */
   $red-card: hsl(346, 100%, 43%);
   $blue-card: hsl(203, 100%, 40%);
   $purple-card: 	hsl(248, 31%, 52%);
 
   & .card {
     position: relative;
-    /* display: inline-block; */
     width: 80%;
-    /* max-width: 350px; */
     height: auto;
     &:not(:last-of-type) {
       margin-bottom: 6%;
     }
-    /* outline: 1px solid red; */
     
     &.tension-normal{
       @mixin product-card $red-card;
@@ -516,40 +421,9 @@ nav#nav-bar {
   }
 }
 
-.row {
-  display: flex;
+section#connect p {
+  text-align: center;
 }
-
-.svg-test-container {
-  margin: 10px;
-  height: auto;
-  width: 100%;
-  max-width: 512px;
-  outline: 1px solid red;
-  &.symbols1 {
-    --color-card-title: red;
-    --color-card-subtitle: green;
-    --color-logo-soundhole: blue;
-    --color-logo-strings: gray;
-    --color-card-footer: orange;
-  }
-  &.symbol-logo {
-    --color-logo-strings: url(#gradient-strings);
-    /* background-image: linear-gradient(-30deg, black, gray, black); */
-  }
-
-  &.new-logo {
-    color: hsl(0, 0%, 23%);
-    --color-logo-soundhole: #BF2C43;
-    --color-logo-strings: #BF2C43;
-    /* color: #BF2C43;
-    --color-logo-soundhole: hsl(0, 0%, 23%);
-    --color-logo-strings: hsl(0, 0%, 23%); */
-
-  }
-
-}
-
 
 .form-connect {
   width: 100%;
@@ -558,15 +432,17 @@ nav#nav-bar {
   margin-right: auto;
   display: flex;
   flex-direction: column;
+  
 
   & input#email {
     appearance: none;
+    outline: none;
     border: 1px solid transparent;
     border-radius: 4px;
 
     box-shadow: inset 0 0.0625em 0.125em hsla(0, 0%, 4%, 0.05);
 
-    background-color: white;
+    background-color: hsl(0, 0%, 97%);
     border-color: hsl(0, 0%, 86%);
     color: hsl(0, 0%, 21%);
 
@@ -582,8 +458,8 @@ nav#nav-bar {
     }
   
     &:focus {
-      border-color: hsl(217, 71%, 53%);
-      box-shadow: 0 0 0 0.125em hsla(217, 71%, 53%, 0.25);
+      border-color: hsl(221, 66%, 30%);
+      box-shadow: 0 0 0 0.125em hsla(221, 66%, 30%, 0.25);
     }
     
   }
@@ -593,21 +469,21 @@ nav#nav-bar {
     margin: auto;
     cursor: pointer;
     color: white;
-    background: #BF2C43;
+    background: $color-red;
+    transition: all .2s;
+    &:hover {
+      background: hsl(351, 63%, 50%);
+    }
   }
 }
 
-footer {
-  
-  color: white;
 
+footer {
+  color: white;
   & .image-attributions {
-    /* padding-bottom: 100px; */
-    margin: 0;
+    padding-top: 1rem;
     font-size: 0.7rem;
     font-style: italic;
-    /* --color-icon-cc-fill: white; */
-    /* --color-icon-cc: black; */
     & a {
       color: hsl(0, 0%, 80%);
       &:hover {
@@ -626,13 +502,11 @@ footer {
   display: none;
   cursor: pointer;
   color: hsl(0, 0%, 70%);
-  /* background: $color-new-fcc-toggler-btn-bg; */
   background: hsla(0, 0%, 0%, .7);
   transition: all .2s;
 
   & svg {
     height: 1.1em;
-    fill: currentColor;
     margin-right: 0.5ch;
   }
 
