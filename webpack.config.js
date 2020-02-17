@@ -66,7 +66,14 @@ module.exports = {
         head: {
           links: [
             { rel: "stylesheet", href: "https://unpkg.com/normalize.css@8.0.1/normalize.css"},
-            { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Federo|Open+Sans&display=swap" }
+            { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Federo|Open+Sans&display=swap" },
+            { rel: "preload", href: "https://live.staticflickr.com/5103/5676875263_2fd6328a8f.jpg", as: "image" },
+            { rel: "preload", href: "https://live.staticflickr.com/4473/37694010252_4358929aeb_c.jpg", as: "image" },
+            { rel: "preload", href: "https://live.staticflickr.com/3691/12256046533_1ce12441be_c.jpg", as: "image" },
+            { rel: "preload", href: "https://live.staticflickr.com/65535/48994864191_4a523436de.jpg", as: "image" },
+            { rel: "preload", href: "https://live.staticflickr.com/2817/11186848285_1a9fed5ab2_z.jpg", as: "image" },
+            { rel: "preload", href: "https://live.staticflickr.com/7359/11476390335_b3b77fa3b5.jpg", as: "image" },
+            { rel: "preload", href: "https://live.staticflickr.com/4500/37677776826_27f75ea5b9.jpg", as: "image" }
           ],
           scripts: [
             // { defer: true, src: 'https://use.fontawesome.com/releases/v5.3.1/js/all.js' }
