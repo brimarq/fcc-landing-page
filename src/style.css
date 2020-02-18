@@ -121,11 +121,14 @@ section, footer {
   padding: 0 10px;
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 60vh;
+/* Prevent targets from being hidden under navbar */
+section:target::before {
+  display: block; 
+  content: ''; 
+  margin-top: calc($nav-bar-height * -1); 
+  height: $nav-bar-height; 
+  visibility: hidden; 
+  pointer-events: none;
 }
 
 footer {
@@ -144,6 +147,11 @@ header, section, form, h1, ul, p {
   position: relative;
   max-width: 900px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+
 }
 
 header {
@@ -159,6 +167,9 @@ nav#nav-bar {
   height: $nav-bar-height;
   width: 100%;
   background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 100;
   transition: top 0.3s;
   color: 	$color-body-text;
@@ -209,6 +220,8 @@ nav#nav-bar {
   width: 100%;
   overflow: hidden;
   height: calc(45vh - $nav-bar-height);
+  margin-top: $nav-bar-height;
+  height: 45vh;
   min-height: 240px;
   background: linear-gradient(
     transparent 50%,
@@ -249,6 +262,8 @@ nav#nav-bar {
   @media (min-width: 768px) {
     height: calc(100vh - $nav-bar-height);
     max-height: calc(100vh - $nav-bar-height);
+    /* height: 100vh; */
+    /* max-height: 100vh; */
     min-height: 300px;
   }
 
@@ -492,6 +507,8 @@ footer {
     }
   }
 }
+
+
 
 #custom_fcc_foldout_toggler {
   @mixin button;
