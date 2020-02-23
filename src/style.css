@@ -122,13 +122,8 @@ section, footer {
 }
 
 /* Prevent targets from being hidden under navbar */
-section:target::before {
-  display: block; 
-  content: ''; 
-  margin-top: calc($nav-bar-height * -1); 
-  height: $nav-bar-height; 
-  visibility: hidden; 
-  pointer-events: none;
+section:target {
+  scroll-margin-top: $nav-bar-height;
 }
 
 footer {
@@ -150,7 +145,7 @@ header, section, form, h1, ul, p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 60vh;
+  /* min-height: 60vh; */
 
 }
 
@@ -495,9 +490,6 @@ section#connect p {
 
 footer {
   color: white;
-  & .container {
-    min-height: 0;
-  }
   & .image-attributions {
     padding-top: 1rem;
     font-size: 0.7rem;
